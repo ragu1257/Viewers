@@ -11,6 +11,7 @@ const toolTypes = [
   'EllipticalRoi',
   'CircleRoi',
   'RectangleRoi',
+  'FreehandRoi'
 ];
 
 const ToolContextMenu = ({

@@ -24,6 +24,7 @@ class MeasurementTable extends Component {
     selectedMeasurementNumber: PropTypes.number,
     t: PropTypes.func,
     saveFunction: PropTypes.func,
+    showMeasurement: PropTypes.func,
     onSaveComplete: PropTypes.func,
   };
 
@@ -39,7 +40,7 @@ class MeasurementTable extends Component {
   };
 
   render() {
-    const { overallWarnings, saveFunction, t } = this.props;
+    const { overallWarnings, saveFunction,showMeasurement, t } = this.props;
     const hasOverallWarnings = overallWarnings.warningList.length > 0;
 
     return (
@@ -89,12 +90,25 @@ class MeasurementTable extends Component {
             </button>
           )}
         </div>
+        <div className="measurementTableFooter">
+          {showMeasurement && (
+            <button
+              onClick={this.showMeasurement}
+              className="saveBtn"
+              data-cy="save-measurements-btn"
+            >
+              <Icon name="save" width="14px" height="14px" />
+              Show Measurement
+            </button>
+          )}
+        </div>
       </div>
     );
   }
 
   saveFunction = async event => {
     const { saveFunction, onSaveComplete } = this.props;
+    console.log("these are the props on click save measurements", this.props);
     if (saveFunction) {
       try {
         const result = await saveFunction();
@@ -115,6 +129,31 @@ class MeasurementTable extends Component {
         }
       }
     }
+  };
+  showMeasurement = async event => {
+    console.log("it is clicked");
+    const { showMeasurement } = this.props;
+    showMeasurement();
+    // console.log("these are the props on click save measurements", this.props);
+    // if (showMeasurement) {
+    //  await showMeasurement();
+    //   //   if (onSaveComplete) {
+    //   //     onSaveComplete({
+    //   //       title: 'STOW SR',
+    //   //       message: result.message,
+    //   //       type: 'success',
+    //   //     });
+    //   //   }
+    //   // } catch (error) {
+    //   //   if (onSaveComplete) {
+    //   //     onSaveComplete({
+    //   //       title: 'STOW SR',
+    //   //       message: error.message,
+    //   //       type: 'error',
+    //   //     });
+    //   //   }
+    //   // }
+    // }
   };
 
   getMeasurementsGroups = () => {

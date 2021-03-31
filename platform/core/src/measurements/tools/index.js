@@ -2,7 +2,7 @@ import { arrowAnnotate } from './arrowAnnotate';
 import { bidirectional } from './bidirectional';
 import { ellipticalRoi } from './ellipticalRoi';
 import { circleRoi } from './circleRoi';
-import { freehandMouse } from './freehandMouse';
+import { freehandMouse } from './freehandRoi';
 import { length } from './length';
 import { nonTarget } from './nonTarget';
 import { rectangleRoi } from './rectangleRoi';

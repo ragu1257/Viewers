@@ -22,7 +22,7 @@ export default function({ eventData, tool, toolGroupId, toolGroup }) {
   // Stop here if there's no measurement data or if it was cancelled
   if (!measurementData || measurementData.cancelled) return;
 
-  log.info('CornerstoneToolsMeasurementAdded');
+  log.info('CornerstoneToolsMeasurementAdded....');
 
   const imageAttributes = getImageAttributes(eventData.element);
 

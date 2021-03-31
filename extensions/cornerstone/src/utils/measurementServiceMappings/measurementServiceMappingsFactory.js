@@ -4,6 +4,7 @@ const SUPPORTED_TOOLS = [
   'Length',
   'EllipticalRoi',
   'RectangleRoi',
+  'FreehandRoi',
   'ArrowAnnotate',
 ];
 

@@ -20,9 +20,11 @@ const parseDicomStructuredReport = (part10SRArrayBuffer, displaySets) => {
   );
 
   const { MeasurementReport } = dcmjs.adapters.Cornerstone;
+
   const storedMeasurementByToolType = MeasurementReport.generateToolState(
     dataset
   );
+  console.log("this is the dataset", storedMeasurementByToolType);
   const measurementData = {};
   let measurementNumber = 0;
 

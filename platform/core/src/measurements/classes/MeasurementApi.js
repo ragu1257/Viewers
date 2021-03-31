@@ -96,7 +96,7 @@ export default class MeasurementApi {
     }
 
     const toolState = cornerstoneTools.globalImageIdSpecificToolStateManager.saveToolState();
-
+console.log("cornerstoneTools.globalImageIdSpecificToolStateManager.toolState;", cornerstoneTools.globalImageIdSpecificToolStateManager.toolState);
     // Stop here if the metadata for the measurement's study is not loaded yet
     const { StudyInstanceUID } = measurement;
     const metadata = studyMetadataManager.get(StudyInstanceUID);
@@ -112,7 +112,7 @@ export default class MeasurementApi {
         childMeasurement._id = measurement._id;
         childMeasurement.measurementNumber = measurement.measurementNumber;
         childMeasurement.lesionNamingNumber = measurement.lesionNamingNumber;
-
+        console.log("may be created here syncMeasurementAndToolData", childMeasurement);
         MeasurementApi.syncMeasurementAndToolData(childMeasurement);
       });
 
@@ -168,7 +168,7 @@ export default class MeasurementApi {
 
     // Add the MeasurementData into the toolData for this imageId
     toolState[imageId][toolType].data.push(measurement);
-
+console.log("it is restorein", toolState);
     cornerstoneTools.globalImageIdSpecificToolStateManager.restoreToolState(
       toolState
     );
@@ -193,6 +193,7 @@ export default class MeasurementApi {
   }
 
   initialize(timepointApi, options = {}) {
+    console.log("initialize called", timepointApi);
     this.timepointApi = timepointApi;
     this.options = options;
     this.toolGroups = {};
@@ -209,6 +210,8 @@ export default class MeasurementApi {
         this.tools[tool.id] = [];
       });
     });
+    // info with all the roi and sopUIDs with axis
+    // console.log("tools", this.tools);
   }
 
   onMeasurementsUpdated() {

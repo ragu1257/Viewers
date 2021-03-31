@@ -22,7 +22,8 @@ export default function handleSingleMeasurementAdded({ eventData, tool }) {
   // Stop here if there's no measurement data or if it was cancelled
   if (!measurementData || measurementData.cancelled) return;
 
-  log.info('CornerstoneToolsMeasurementAdded');
+  // console.log("this is collection.........");
+  log.info('CornerstoneToolsMeasurementAdded!!!!');
 
   const imageAttributes = getImageAttributes(eventData.element);
   const measurement = Object.assign({}, measurementData, imageAttributes, {
@@ -32,6 +33,8 @@ export default function handleSingleMeasurementAdded({ eventData, tool }) {
   });
 
   const addedMeasurement = measurementApi.addMeasurement(toolType, measurement);
+
+
   Object.assign(measurementData, addedMeasurement);
 
   const measurementLabel = getLabel(measurementData);

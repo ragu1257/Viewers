@@ -65,7 +65,7 @@ function getDefaultButtonData() {
       id: 'angle',
       title: 'Angle Measurement',
       className: 'imageViewerTool',
-      icon: 'fa fa-angle-left',
+      icon: 'fa fa-angle-right',
     },
     {
       id: 'dragProbe',
@@ -84,6 +84,12 @@ function getDefaultButtonData() {
       title: 'Rectangle ROI',
       className: 'imageViewerTool',
       icon: 'square-o',
+    },
+    {
+      id: 'freehandRoi',
+      title: 'Freehand ROI',
+      className: 'imageViewerTool',
+      icon: 'circle-o',
     },
     {
       id: 'resetViewport',
