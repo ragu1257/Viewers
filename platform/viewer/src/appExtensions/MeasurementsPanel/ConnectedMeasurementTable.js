@@ -333,38 +333,38 @@ function getSaveFunction(serverType) {
       //     }
       //   })
       // );
-      Object.entries(measurementApi.tools).map(([key, value]) => {
-        console.log('keysss', key, value, value.length);
-        if (value.length) {
-          value.forEach(async function(arrayItem) {
-            console.log(arrayItem, key);
-            let presentOrNot = false;
-            await fetch('http://localhost:8080/' + key)
-              .then(res => {
-                return res.json();
-              })
-              .then(data => {
-                console.log(
-                  'yaaa hohoooooo 4444',
-                  JSON.stringify(data).includes(arrayItem._id)
-                );
-                presentOrNot = JSON.stringify(data).includes(arrayItem._id);
-                // tempMeasurements = data;
-              });
-            console.log('presentOrNot', presentOrNot);
-            if (presentOrNot) {
-              await fetch(
-                'http://localhost:8080/' + key + '?_id=' + arrayItem._id,
-                {
-                  method: 'DELETE',
-                  // headers: {
-                  //   'Content-Type': 'application/json',
-                  // },
-                  // body: JSON.stringify(arrayItem),
-                }
-              ).then(data => {
-                console.log('data deleted for', arrayItem._id);
-              });
+      console.log('measurementApi.tools', measurementApi.tools);
+      try {
+        Object.entries(measurementApi.tools).map(([key, value]) => {
+          // console.log('keysss', key, value, value.length);
+          if (value.length) {
+            value.forEach(async function(arrayItem) {
+              console.log(arrayItem, key);
+              // let presentOrNot = false;
+              // await fetch('http://localhost:8080/' + key)
+              //   .then(res => {
+              //     return res.json();
+              //   })
+              //   .then(data => {
+              //     console.log(
+              //       'yaaa hohoooooo 4444',
+              //       JSON.stringify(data).includes(arrayItem._id)
+              //     );
+              //     presentOrNot = JSON.stringify(data).includes(arrayItem._id);
+              //     // tempMeasurements = data;
+              //   });
+              // console.log('presentOrNot', presentOrNot);
+              // if (presentOrNot) {
+              //   await fetch(
+              //     'http://localhost:8080/' + key + '?' + arrayItem._id,
+              //     {
+              //       method: 'PUT',
+              //       headers: {
+              //         'Content-Type': 'application/json',
+              //       },
+              //       body: JSON.stringify(arrayItem),
+              //     }
+              //   );
               // await fetch(
               //   'http://localhost:8080/' + key,
               //   {
@@ -377,7 +377,18 @@ function getSaveFunction(serverType) {
               // ).then(data => {
               //   console.log('data added for', arrayItem._id);
               // });
-            } else {
+              // } else {
+              //   await fetch('http://localhost:8080/' + key, {
+              //     method: 'POST',
+              //     headers: {
+              //       'Content-Type': 'application/json',
+              //     },
+              //     body: JSON.stringify(arrayItem),
+              //   }).then(data => {
+              //     console.log('data ssaved', arrayItem._id);
+              //   });
+              // }
+
               await fetch('http://localhost:8080/' + key, {
                 method: 'POST',
                 headers: {
@@ -385,24 +396,16 @@ function getSaveFunction(serverType) {
                 },
                 body: JSON.stringify(arrayItem),
               }).then(data => {
-                console.log('data ssaved', arrayItem._id);
+                console.log('data ssaved');
               });
-            }
-
-            //   fetch('http://localhost:8080/' + key, {
-            //     method: 'POST',
-            //     headers: {
-            //       'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify(arrayItem),
-            //   }).then(data => {
-            //     console.log('data ssaved');
-            //   });
-          });
-        }
-        // Pretty straightforward - use key for the key and value for the value.
-        // Just to clarify: unlike object destructuring, the parameter names don't matter here.
-      });
+            });
+          }
+          // Pretty straightforward - use key for the key and value for the value.
+          // Just to clarify: unlike object destructuring, the parameter names don't matter here.
+        });
+      } catch (error) {
+        console.error(error);
+      }
       console.log('this is measurementApi return', measurementApi.tools);
       const promise = measurementApi.storeMeasurements();
       return promise;
@@ -411,12 +414,12 @@ function getSaveFunction(serverType) {
 }
 
 function getShowMeasurement(serverType) {
-  fetch('http://localhost:8080/info')
+  fetch('http://localhost:8080/EllipticalRoi')
     .then(res => {
       return res.json();
     })
     .then(data => {
-      console.log('yaaa hohoooooo', data);
+      console.log('yaaa hohoooooo getting data', data);
       tempMeasurements = data;
     });
   if (serverType === 'dicomWeb') {
