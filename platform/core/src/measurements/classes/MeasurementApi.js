@@ -223,29 +223,42 @@ console.log("it is restorein", toolState);
     this.options.onMeasurementsUpdated(Object.assign({}, this.tools));
   }
 
-  retrieveMeasurements(PatientID, timepointIds) {
+  async retrieveMeasurements(PatientID, timepointIds) {
     const retrievalFn = configuration.dataExchange.retrieve;
+    console.log("data retreiving", retrievalFn);
     const { server } = configuration;
+    console.log("data retreiving seerver", server);
     if (typeof retrievalFn !== 'function') {
       log.error('Measurement retrieval function has not been configured.');
       return;
     }
+    let tempMeasurements
+     await fetch('http://localhost:8080/EllipticalRoi')
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        console.log('yaaa hohoooooo getting data', data);
+        tempMeasurements = data;
+      });
+      console.log("tempMeasurementstempMeasurements", tempMeasurements);
 
     return new Promise((resolve, reject) => {
+
       retrievalFn(server).then(measurementData => {
         if (measurementData) {
           log.info('Measurement data retrieval');
           log.info(measurementData);
 
-          Object.keys(measurementData).forEach(measurementTypeId => {
-            const measurements = measurementData[measurementTypeId];
+          // Object.keys(measurementData).forEach(measurementTypeId => {
+          //   const measurements = measurementData[measurementTypeId];
 
-            measurements.forEach(measurement => {
+          tempMeasurements.forEach(measurement => {
               const { toolType } = measurement;
-
+            console.log("new new new", toolType, measurement);
               this.addMeasurement(toolType, measurement);
             });
-          });
+          // });
         }
 
         resolve();
