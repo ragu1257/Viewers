@@ -1,0 +1,215 @@
+{
+  "EllipticalRoi": [
+    {
+      "sopInstanceUid": "1.2.826.0.1.3680043.8.1055.1.20190312112042891.994604045.3468994",
+      "frameIndex": 0,
+      "toolType": "EllipticalRoi",
+      "active": false,
+      "cachedStats": {
+        "area": 6124.954084443014,
+        "count": 199963,
+        "mean": 1314.0757140070914,
+        "variance": 530873.8938388098,
+        "stdDev": 728.6109344765626,
+        "min": 160,
+        "max": 2993
+      },
+      "handles": {
+        "end": {
+          "x": 440.1498107910156,
+          "y": 1367.12548828125,
+          "highlight": false,
+          "active": false
+        },
+        "initialRotation": 0,
+        "start": {
+          "x": 1042.3360595703125,
+          "y": 943.967529296875,
+          "highlight": false,
+          "active": false
+        },
+        "textBox": {
+          "hasMoved": false,
+          "movesIndependently": false,
+          "drawnIndependently": true,
+          "allowedOutsideImage": true,
+          "hasBoundingBox": true,
+          "x": 1042.3360595703125,
+          "y": 1155.5465087890625,
+          "boundingBox": {
+            "width": 258.0859375,
+            "height": 45,
+            "left": 711.5263219425334,
+            "top": 239.07893606916588
+          },
+          "active": false
+        }
+      },
+      "invalidated": false,
+      "visible": true,
+      "findingSites": [],
+      "imageId": "wadors:/dicom-web/studies/1.2.826.0.1.3680043.8.1055.1.20190312112042893.772048187.2439604/series/1.2.826.0.1.3680043.8.1055.1.20190312112042898.879155239.2276229/instances/1.2.826.0.1.3680043.8.1055.1.20190312112042891.994604045.3468994/frames/1",
+      "imagePath": "1.2.826.0.1.3680043.8.1055.1.20190312112042893.772048187.2439604_1.2.826.0.1.3680043.8.1055.1.20190312112042898.879155239.2276229_1.2.826.0.1.3680043.8.1055.1.20190312112042891.994604045.3468994_0",
+      "SOPInstanceUID": "1.2.826.0.1.3680043.8.1055.1.20190312112042891.994604045.3468994",
+      "SeriesInstanceUID": "1.2.826.0.1.3680043.8.1055.1.20190312112042898.879155239.2276229",
+      "StudyInstanceUID": "1.2.826.0.1.3680043.8.1055.1.20190312112042893.772048187.2439604",
+      "PatientID": "0",
+      "measurementNumber": 1,
+      "timepointId": "TimepointId",
+      "_id": "3a0cb06c-d239-2811-0164-77a711c11204",
+      "lesionNamingNumber": 1,
+      "unit": "",
+      "id": 1
+    },
+    {
+      "visible": true,
+      "active": true,
+      "invalidated": false,
+      "handles": {
+        "start": {
+          "x": 638.0109890109893,
+          "y": 424.0879120879121,
+          "highlight": true,
+          "active": false
+        },
+        "end": {
+          "x": 1053.2637362637365,
+          "y": 574.2857142857143,
+          "highlight": true,
+          "active": false,
+          "moving": false
+        },
+        "initialRotation": 0,
+        "textBox": {
+          "active": false,
+          "hasMoved": false,
+          "movesIndependently": false,
+          "drawnIndependently": true,
+          "allowedOutsideImage": true,
+          "hasBoundingBox": true,
+          "x": 1053.2637362637365,
+          "y": 499.1868131868132,
+          "boundingBox": {
+            "width": 258.0859375,
+            "height": 45,
+            "left": 714,
+            "top": 90.5
+          }
+        }
+      },
+      "uuid": "dd979ebf-cdf0-4dea-aef6-29870c5e978d",
+      "PatientID": "0",
+      "StudyInstanceUID": "1.2.826.0.1.3680043.8.1055.1.20190312112042893.772048187.2439604",
+      "SeriesInstanceUID": "1.2.826.0.1.3680043.8.1055.1.20190312112042898.879155239.2276229",
+      "SOPInstanceUID": "1.2.826.0.1.3680043.8.1055.1.20190312112042891.994604045.3468994",
+      "frameIndex": 0,
+      "imagePath": "1.2.826.0.1.3680043.8.1055.1.20190312112042893.772048187.2439604_1.2.826.0.1.3680043.8.1055.1.20190312112042898.879155239.2276229_1.2.826.0.1.3680043.8.1055.1.20190312112042891.994604045.3468994_0",
+      "lesionNamingNumber": 2,
+      "userId": null,
+      "toolType": "EllipticalRoi",
+      "_id": "cca91716-25f0-7b5f-d9ad-279b3b8bea76",
+      "timepointId": "TimepointId",
+      "measurementNumber": 2,
+      "cachedStats": {
+        "area": 1497.2879674394167,
+        "count": 48875,
+        "mean": 2203.7935549872122,
+        "variance": 194354.0036208667,
+        "stdDev": 440.8559896620059,
+        "min": 799,
+        "max": 3195
+      },
+      "viewport": {
+        "scale": 0.2263681592039801,
+        "translation": {
+          "x": 0,
+          "y": 0
+        },
+        "voi": {
+          "windowWidth": 4096,
+          "windowCenter": 2047
+        },
+        "invert": false,
+        "pixelReplication": false,
+        "rotation": 0,
+        "hflip": false,
+        "vflip": false,
+        "labelmap": false,
+        "displayedArea": {
+          "tlhc": {
+            "x": 1,
+            "y": 1
+          },
+          "brhc": {
+            "x": 1572,
+            "y": 2010
+          },
+          "rowPixelSpacing": 0.175,
+          "columnPixelSpacing": 0.175,
+          "presentationSizeMode": "NONE"
+        }
+      },
+      "id": 2
+    },
+    {
+      "sopInstanceUid": "1.2.826.0.1.3680043.8.1055.1.20190312112042891.994604045.3468994",
+      "frameIndex": 0,
+      "toolType": "EllipticalRoi",
+      "active": false,
+      "cachedStats": {
+        "area": 6124.954084443014,
+        "count": 199963,
+        "mean": 1314.0757140070914,
+        "variance": 530873.8938388098,
+        "stdDev": 728.6109344765626,
+        "min": 160,
+        "max": 2993
+      },
+      "handles": {
+        "end": {
+          "x": 440.1498107910156,
+          "y": 1367.12548828125,
+          "highlight": false,
+          "active": false
+        },
+        "initialRotation": 0,
+        "start": {
+          "x": 1042.3360595703125,
+          "y": 943.967529296875,
+          "highlight": false,
+          "active": false
+        },
+        "textBox": {
+          "hasMoved": false,
+          "movesIndependently": false,
+          "drawnIndependently": true,
+          "allowedOutsideImage": true,
+          "hasBoundingBox": true,
+          "x": 1042.3360595703125,
+          "y": 1155.5465087890625,
+          "boundingBox": {
+            "width": 258.0859375,
+            "height": 45,
+            "left": 686.2753071191892,
+            "top": 125.24898147203436
+          }
+        }
+      },
+      "invalidated": false,
+      "visible": true,
+      "findingSites": [],
+      "imageId": "wadors:/dicom-web/studies/1.2.826.0.1.3680043.8.1055.1.20190312112042893.772048187.2439604/series/1.2.826.0.1.3680043.8.1055.1.20190312112042898.879155239.2276229/instances/1.2.826.0.1.3680043.8.1055.1.20190312112042891.994604045.3468994/frames/1",
+      "imagePath": "1.2.826.0.1.3680043.8.1055.1.20190312112042893.772048187.2439604_1.2.826.0.1.3680043.8.1055.1.20190312112042898.879155239.2276229_1.2.826.0.1.3680043.8.1055.1.20190312112042891.994604045.3468994_0",
+      "SOPInstanceUID": "1.2.826.0.1.3680043.8.1055.1.20190312112042891.994604045.3468994",
+      "SeriesInstanceUID": "1.2.826.0.1.3680043.8.1055.1.20190312112042898.879155239.2276229",
+      "StudyInstanceUID": "1.2.826.0.1.3680043.8.1055.1.20190312112042893.772048187.2439604",
+      "PatientID": "0",
+      "measurementNumber": 1,
+      "timepointId": "TimepointId",
+      "_id": "29e4b8e8-320e-ad47-895d-a67cbc7a58a1",
+      "lesionNamingNumber": 1,
+      "unit": "",
+      "id": 3
+    }
+  ]
+}

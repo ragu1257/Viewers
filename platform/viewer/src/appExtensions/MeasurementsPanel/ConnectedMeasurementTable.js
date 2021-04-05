@@ -300,96 +300,7 @@ function convertTimepointsToTableData(timepoints) {
 //     },
 //   },
 // }];
-let tempMeasurements = [{
-  visible: true,
-  active: true,
-  invalidated: false,
-  handles: {
-    start: {
-      x: 200.0913580246911,
-      y: 1682.2666666666667,
-      highlight: true,
-      active: true,
-    },
-    end: {
-      x: 727.5999999999999,
-      y: 1886.177777777778,
-      highlight: true,
-      active: true,
-      moving: false,
-    },
-    initialRotation: 0,
-    textBox: {
-      active: true,
-      hasMoved: true,
-      movesIndependently: true,
-      drawnIndependently: true,
-      allowedOutsideImage: true,
-      hasBoundingBox: false,
-      // x: 727.5999999999999,
-      // y: 1784.2222222222222,
-      // boundingBox: {
-      //   width: 249.1015625,
-      //   height: 45,
-      //   left: 775,
-      //   top: 292.5,
-      // },
-    },
-  },
-  uuid: '8989edc1-48f0-4999-b625-81bc87172e71',
-  PatientID: '001',
-  StudyInstanceUID: '1.2.840.113619.2.66.2158408118.16050010109105933.20000',
-  SeriesInstanceUID: '1.2.840.113619.2.66.2158408118.16050010109110253.10003',
-  SOPInstanceUID: '1.2.840.113619.2.66.2158408118.2683010109110300.85',
-  frameIndex: 0,
-  imagePath:
-    '1.2.840.113619.2.66.2158408118.16050010109105933.20000_1.2.840.113619.2.66.2158408118.16050010109110253.10003_1.2.840.113619.2.66.2158408118.2683010109110300.85_0',
-  // lesionNamingNumber: 4,
-  // userId: null,
-  toolType: 'EllipticalRoi',
-  _id: '2115bee7-51b8-34fd-3812-4acb0004c4f2',
-  // timepointId: 'TimepointId',
-  // measurementNumber: 4,
-  // cachedStats: {
-  //   area: 581.6030479590786,
-  //   count: 58127,
-  //   mean: 2226.322242675521,
-  //   variance: 2560.3312242571265,
-  //   stdDev: 50.59971565391575,
-  //   min: 2064,
-  //   max: 2407,
-  // },
-  // viewport: {
-  //   scale: 0.17654751525719267,
-  //   translation: {
-  //     x: 0,
-  //     y: 0,
-  //   },
-  //   voi: {
-  //     windowWidth: 750,
-  //     windowCenter: 2419,
-  //   },
-  //   invert: false,
-  //   pixelReplication: false,
-  //   rotation: 0,
-  //   hflip: false,
-  //   vflip: false,
-  //   labelmap: false,
-  //   displayedArea: {
-  //     tlhc: {
-  //       x: 1,
-  //       y: 1,
-  //     },
-  //     brhc: {
-  //       x: 1914,
-  //       y: 2294,
-  //     },
-  //     rowPixelSpacing: 0.1,
-  //     columnPixelSpacing: 0.1,
-  //     presentationSizeMode: 'NONE',
-  //   },
-  // },
-}];
+let tempMeasurements = [];
 function getSaveFunction(serverType) {
   if (serverType === 'dicomWeb') {
     return () => {
@@ -408,16 +319,109 @@ function getSaveFunction(serverType) {
       // });
 
       // we can save this to our database
-      console.log('this is measurementApi return', measurementApi);
+      //   fetch("http://localhost:8080/info", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json"
+      //   },
+      //   body: JSON.stringify(measurementApi)
+      // }).then(
+      //   this.setState({
+      //     singledata: {
+      //       title: "",
+      //       author: ""
+      //     }
+      //   })
+      // );
+      Object.entries(measurementApi.tools).map(([key, value]) => {
+        console.log('keysss', key, value, value.length);
+        if (value.length) {
+          value.forEach(async function(arrayItem) {
+            console.log(arrayItem, key);
+            let presentOrNot = false;
+            await fetch('http://localhost:8080/' + key)
+              .then(res => {
+                return res.json();
+              })
+              .then(data => {
+                console.log(
+                  'yaaa hohoooooo 4444',
+                  JSON.stringify(data).includes(arrayItem._id)
+                );
+                presentOrNot = JSON.stringify(data).includes(arrayItem._id);
+                // tempMeasurements = data;
+              });
+            console.log('presentOrNot', presentOrNot);
+            if (presentOrNot) {
+              await fetch(
+                'http://localhost:8080/' + key + '?_id=' + arrayItem._id,
+                {
+                  method: 'DELETE',
+                  // headers: {
+                  //   'Content-Type': 'application/json',
+                  // },
+                  // body: JSON.stringify(arrayItem),
+                }
+              ).then(data => {
+                console.log('data deleted for', arrayItem._id);
+              });
+              // await fetch(
+              //   'http://localhost:8080/' + key,
+              //   {
+              //     method: 'POST',
+              //     headers: {
+              //       'Content-Type': 'application/json',
+              //     },
+              //     body: JSON.stringify(arrayItem),
+              //   }
+              // ).then(data => {
+              //   console.log('data added for', arrayItem._id);
+              // });
+            } else {
+              await fetch('http://localhost:8080/' + key, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(arrayItem),
+              }).then(data => {
+                console.log('data ssaved', arrayItem._id);
+              });
+            }
+
+            //   fetch('http://localhost:8080/' + key, {
+            //     method: 'POST',
+            //     headers: {
+            //       'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify(arrayItem),
+            //   }).then(data => {
+            //     console.log('data ssaved');
+            //   });
+          });
+        }
+        // Pretty straightforward - use key for the key and value for the value.
+        // Just to clarify: unlike object destructuring, the parameter names don't matter here.
+      });
+      console.log('this is measurementApi return', measurementApi.tools);
       const promise = measurementApi.storeMeasurements();
       return promise;
     };
   }
 }
 
-function getShowMeasurement(serverType){
+function getShowMeasurement(serverType) {
+  fetch('http://localhost:8080/info')
+    .then(res => {
+      return res.json();
+    })
+    .then(data => {
+      console.log('yaaa hohoooooo', data);
+      tempMeasurements = data;
+    });
   if (serverType === 'dicomWeb') {
     return () => {
+      console.log(tempMeasurements);
       // const measurementApi = OHIF.measurements.MeasurementApi.Instance;
 
       const localMeasurementAPI = OHIF.measurements.MeasurementApi.Instance;
@@ -436,7 +440,6 @@ function getShowMeasurement(serverType){
       // console.log('this is measurementApi return', measurementApi);
       // const promise = measurementApi.storeMeasurements();
       // return promise;
-
     };
   }
 }
@@ -446,7 +449,7 @@ const mapStateToProps = state => {
   const { timepoints, measurements } = timepointManager;
   const activeServer = servers.servers.find(a => a.active === true);
   const saveFunction = getSaveFunction(activeServer.type);
-  const showMeasurement = getShowMeasurement(activeServer.type)
+  const showMeasurement = getShowMeasurement(activeServer.type);
 
   return {
     timepoints: convertTimepointsToTableData(timepoints),
@@ -457,7 +460,7 @@ const mapStateToProps = state => {
     timepointManager: state.timepointManager,
     viewports: state.viewports,
     saveFunction,
-    showMeasurement
+    showMeasurement,
   };
 };
 
@@ -575,7 +578,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 const mergeProps = (propsFromState, propsFromDispatch, ownProps) => {
-  const { timepoints, saveFunction, showMeasurement, measurementCollection } = propsFromState;
+  const {
+    timepoints,
+    saveFunction,
+    showMeasurement,
+    measurementCollection,
+  } = propsFromState;
   const { onSaveComplete, selectedMeasurementNumber } = ownProps;
 
   return {
