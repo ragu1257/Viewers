@@ -407,8 +407,8 @@ function getSaveFunction(serverType) {
         console.error(error);
       }
       console.log('this is measurementApi return', measurementApi.tools);
-      const promise = measurementApi.storeMeasurements();
-      return promise;
+      // const promise = measurementApi.storeMeasurements();
+      return true;
     };
   }
 }

@@ -271,6 +271,97 @@
         }
       },
       "id": 3
+    },
+    {
+      "visible": true,
+      "active": true,
+      "invalidated": false,
+      "handles": {
+        "start": {
+          "x": 279.961267605634,
+          "y": 573.2746478873239,
+          "highlight": true,
+          "active": false
+        },
+        "end": {
+          "x": 506.4401408450708,
+          "y": 728.9788732394366,
+          "highlight": true,
+          "active": false,
+          "moving": false
+        },
+        "initialRotation": 0,
+        "textBox": {
+          "active": false,
+          "hasMoved": false,
+          "movesIndependently": false,
+          "drawnIndependently": true,
+          "allowedOutsideImage": true,
+          "hasBoundingBox": true,
+          "x": 506.4401408450708,
+          "y": 651.1267605633802,
+          "boundingBox": {
+            "width": 245.9609375,
+            "height": 45,
+            "left": 337.50000000000006,
+            "top": 69.5
+          }
+        }
+      },
+      "uuid": "efb4b824-a0cf-4385-9128-2d792cd52a0b",
+      "PatientID": "0",
+      "StudyInstanceUID": "1.2.826.0.1.3680043.8.1055.1.20190312112042893.772048187.2439604",
+      "SeriesInstanceUID": "1.2.826.0.1.3680043.8.1055.1.20190312112042898.879155239.2276229",
+      "SOPInstanceUID": "1.2.826.0.1.3680043.8.1055.1.20190312112042891.994604045.3468994",
+      "frameIndex": 0,
+      "imagePath": "1.2.826.0.1.3680043.8.1055.1.20190312112042893.772048187.2439604_1.2.826.0.1.3680043.8.1055.1.20190312112042898.879155239.2276229_1.2.826.0.1.3680043.8.1055.1.20190312112042891.994604045.3468994_0",
+      "lesionNamingNumber": 4,
+      "userId": null,
+      "toolType": "EllipticalRoi",
+      "_id": "cf4fcd35-f47e-ecb2-b288-850466398b44",
+      "timepointId": "TimepointId",
+      "measurementNumber": 4,
+      "cachedStats": {
+        "area": 848.0061779926757,
+        "count": 27673,
+        "mean": 624.2404509811007,
+        "variance": 34659.62786973483,
+        "stdDev": 186.1709640887505,
+        "min": 242,
+        "max": 1192
+      },
+      "viewport": {
+        "scale": 0.14129353233830846,
+        "translation": {
+          "x": 0,
+          "y": 0
+        },
+        "voi": {
+          "windowWidth": 4096,
+          "windowCenter": 2047
+        },
+        "invert": false,
+        "pixelReplication": false,
+        "rotation": 0,
+        "hflip": false,
+        "vflip": false,
+        "labelmap": false,
+        "displayedArea": {
+          "tlhc": {
+            "x": 1,
+            "y": 1
+          },
+          "brhc": {
+            "x": 1572,
+            "y": 2010
+          },
+          "rowPixelSpacing": 0.175,
+          "columnPixelSpacing": 0.175,
+          "presentationSizeMode": "NONE"
+        }
+      },
+      "unit": "",
+      "id": 4
     }
   ]
 }
