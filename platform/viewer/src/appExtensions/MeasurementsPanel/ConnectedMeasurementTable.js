@@ -631,8 +631,16 @@ const mergeProps = (propsFromState, propsFromDispatch, ownProps) => {
         viewportsState
       );
     },
-    onDeleteClick: (event, measurementData) => {
+    onDeleteClick: async (event, measurementData) => {
       const { MeasurementHandlers } = OHIF.measurements;
+console.log("delete called",measurementData);
+     await fetch("http://localhost:8080/"+measurementData.toolType + `/${measurementData.lesionNamingNumber}`  , {
+        method: "DELETE"
+        // headers: {
+        //   "Content-Type": "application/json"
+        // },
+        // body: JSON.stringify(measurementApi)
+      })
 
       MeasurementHandlers.onRemoved({
         detail: {
