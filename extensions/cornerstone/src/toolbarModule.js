@@ -35,15 +35,15 @@ const enums = {
 };
 
 const definitions = [
-  {
-    id: 'StackScroll',
-    label: 'Stack Scroll',
-    icon: 'bars',
-    //
-    type: TOOLBAR_BUTTON_TYPES.SET_TOOL_ACTIVE,
-    commandName: 'setToolActive',
-    commandOptions: { toolName: 'StackScroll' },
-  },
+  // {
+  //   id: 'StackScroll',
+  //   label: 'Stack Scroll',
+  //   icon: 'bars',
+  //   //
+  //   type: TOOLBAR_BUTTON_TYPES.SET_TOOL_ACTIVE,
+  //   commandName: 'setToolActive',
+  //   commandOptions: { toolName: 'StackScroll' },
+  // },
   {
     id: 'Zoom',
     label: 'Zoom',
@@ -106,16 +106,16 @@ const definitions = [
     type: TOOLBAR_BUTTON_TYPES.COMMAND,
     commandName: 'resetViewport',
   },
-  {
-    id: 'Cine',
-    label: 'CINE',
-    icon: 'youtube',
-    //
-    type: TOOLBAR_BUTTON_TYPES.BUILT_IN,
-    options: {
-      behavior: TOOLBAR_BUTTON_BEHAVIORS.CINE,
-    },
-  },
+  // {
+  //   id: 'Cine',
+  //   label: 'CINE',
+  //   icon: 'youtube',
+  //   //
+  //   type: TOOLBAR_BUTTON_TYPES.BUILT_IN,
+  //   options: {
+  //     behavior: TOOLBAR_BUTTON_BEHAVIORS.CINE,
+  //   },
+  // },
   {
     id: 'More',
     label: 'More',

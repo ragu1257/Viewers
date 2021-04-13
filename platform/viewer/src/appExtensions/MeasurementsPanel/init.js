@@ -109,8 +109,21 @@ export default function init({
       content: ToolContextMenu,
       contentProps: {
         eventData: event.detail,
-        onDelete: (nearbyToolData, eventData) => {
+        onDelete: async(nearbyToolData, eventData, measurementData) => {
           const element = eventData.element;
+          console.log("on delete called", measurementData.measurementNumber);
+          await fetch(
+            'http://localhost:8080/' +
+              measurementData.toolType +
+              `/${measurementData.measurementNumber}`,
+            {
+              method: 'DELETE',
+              // headers: {
+              //   "Content-Type": "application/json"
+              // },
+              // body: JSON.stringify(measurementApi)
+            }
+          );
           commandsManager.runCommand('removeToolState', {
             element,
             toolType: nearbyToolData.toolType,

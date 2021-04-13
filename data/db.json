@@ -6,14 +6,14 @@
       "invalidated": false,
       "handles": {
         "start": {
-          "x": 571.938628158845,
-          "y": 696.6064981949459,
+          "x": 282.5,
+          "y": 742.5,
           "highlight": true,
           "active": false
         },
         "end": {
-          "x": 985.548736462094,
-          "y": 1073.9350180505414,
+          "x": 579.5,
+          "y": 1147.5,
           "highlight": true,
           "active": false,
           "moving": false
@@ -26,47 +26,173 @@
           "drawnIndependently": true,
           "allowedOutsideImage": true,
           "hasBoundingBox": true,
-          "x": 985.548736462094,
-          "y": 885.2707581227437,
+          "x": 579.5,
+          "y": 945,
           "boundingBox": {
-            "width": 258.0859375,
+            "width": 236.9765625,
             "height": 45,
-            "left": 418.3989169675091,
-            "top": 161.16064981949458
+            "left": 304,
+            "top": 82.5
           }
         }
       },
-      "uuid": "7dcac5c9-8f34-4ee5-9612-56c90ebbdeaf",
-      "PatientID": "0",
-      "StudyInstanceUID": "1.2.826.0.1.3680043.8.1055.1.20190312112042893.772048187.2439604",
-      "SeriesInstanceUID": "1.2.826.0.1.3680043.8.1055.1.20190312112042898.879155239.2276229",
-      "SOPInstanceUID": "1.2.826.0.1.3680043.8.1055.1.20190312112042891.994604045.3468994",
+      "uuid": "b274d6bf-3d4c-4094-96ad-a78e01bc06a3",
+      "PatientID": "AnonymID_DEMO616749948975",
+      "StudyInstanceUID": "1.3.6.1.4.1.18047.1.11.11616749948975",
+      "SeriesInstanceUID": "1.3.6.1.4.1.18047.1.11.11616749951527",
+      "SOPInstanceUID": "1.3.6.1.4.1.18047.1.11.11616749951528",
       "frameIndex": 0,
-      "imagePath": "1.2.826.0.1.3680043.8.1055.1.20190312112042893.772048187.2439604_1.2.826.0.1.3680043.8.1055.1.20190312112042898.879155239.2276229_1.2.826.0.1.3680043.8.1055.1.20190312112042891.994604045.3468994_0",
-      "lesionNamingNumber": 1,
+      "imagePath": "1.3.6.1.4.1.18047.1.11.11616749948975_1.3.6.1.4.1.18047.1.11.11616749951527_1.3.6.1.4.1.18047.1.11.11616749951528_0",
+      "lesionNamingNumber": 2,
       "userId": null,
       "toolType": "EllipticalRoi",
-      "_id": "61985b7f-b6de-73bc-239b-2feb73b9e621",
+      "_id": "b746e554-7e2b-6847-19bd-87fa7900370b",
       "timepointId": "TimepointId",
-      "measurementNumber": 1,
+      "measurementNumber": 2,
       "cachedStats": {
-        "area": 3754.115845494124,
-        "count": 122569,
-        "mean": 1607.7112891514168,
-        "variance": 438798.0541277905,
-        "stdDev": 662.418337704951,
-        "min": 272,
-        "max": 3143
+        "area": 1063.8076180367896,
+        "count": 94428,
+        "mean": 391.27084127589274,
+        "variance": 2243.4470944462228,
+        "stdDev": 47.36504084708703,
+        "min": 262,
+        "max": 643
       },
+      "unit": "",
+      "id": 2
+    },
+    {
+      "visible": true,
+      "active": false,
+      "invalidated": false,
+      "handles": {
+        "start": {
+          "x": 576.234432234432,
+          "y": 1710.4175824175825,
+          "highlight": true,
+          "active": false
+        },
+        "end": {
+          "x": 951.3260073260071,
+          "y": 2385.5824175824177,
+          "highlight": true,
+          "active": false,
+          "moving": false
+        },
+        "initialRotation": 0,
+        "textBox": {
+          "active": false,
+          "hasMoved": false,
+          "movesIndependently": false,
+          "drawnIndependently": true,
+          "allowedOutsideImage": true,
+          "hasBoundingBox": true,
+          "x": 951.3260073260071,
+          "y": 2048,
+          "boundingBox": {
+            "width": 258.0859375,
+            "height": 45,
+            "left": 303,
+            "top": 114
+          }
+        }
+      },
+      "uuid": "7966a350-ec24-4c9a-9b82-d3acc5b669af",
+      "PatientID": "AnonymID_DEMO616749948975",
+      "StudyInstanceUID": "1.3.6.1.4.1.18047.1.11.11616749948975",
+      "SeriesInstanceUID": "1.3.6.1.4.1.18047.1.11.11616749949881",
+      "SOPInstanceUID": "1.3.6.1.4.1.18047.1.11.11616749949882",
+      "frameIndex": 0,
+      "imagePath": "1.3.6.1.4.1.18047.1.11.11616749948975_1.3.6.1.4.1.18047.1.11.11616749949881_1.3.6.1.4.1.18047.1.11.11616749949882_0",
+      "lesionNamingNumber": 3,
+      "userId": null,
+      "toolType": "EllipticalRoi",
+      "_id": "38e47283-b530-2427-f06c-f699332cc5e2",
+      "timepointId": "TimepointId",
+      "measurementNumber": 3,
+      "cachedStats": {
+        "area": 846.1087742421489,
+        "count": 198732,
+        "mean": 1276.8645462230543,
+        "variance": 333567.3660644472,
+        "stdDev": 577.5529119175551,
+        "min": 242,
+        "max": 3634
+      },
+      "unit": "",
+      "id": 3
+    },
+    {
+      "visible": true,
+      "active": false,
+      "invalidated": false,
+      "handles": {
+        "start": {
+          "x": 1848.5,
+          "y": 499.5,
+          "highlight": true,
+          "active": false,
+          "moving": false,
+          "hasMoved": true
+        },
+        "end": {
+          "x": 1641.5,
+          "y": 1552.5,
+          "highlight": true,
+          "active": false,
+          "moving": false
+        },
+        "initialRotation": 0,
+        "textBox": {
+          "active": false,
+          "hasMoved": false,
+          "movesIndependently": false,
+          "drawnIndependently": true,
+          "allowedOutsideImage": true,
+          "hasBoundingBox": true,
+          "x": 1848.5,
+          "y": 1026,
+          "boundingBox": {
+            "width": 236.9765625,
+            "height": 45,
+            "left": 445,
+            "top": 91.5
+          }
+        }
+      },
+      "uuid": "4f88a4ce-b557-4836-8912-0e3303ea2830",
+      "PatientID": "AnonymID_DEMO616749948975",
+      "StudyInstanceUID": "1.3.6.1.4.1.18047.1.11.11616749948975",
+      "SeriesInstanceUID": "1.3.6.1.4.1.18047.1.11.11616749951522",
+      "SOPInstanceUID": "1.3.6.1.4.1.18047.1.11.11616749951523",
+      "frameIndex": 0,
+      "imagePath": "1.3.6.1.4.1.18047.1.11.11616749948975_1.3.6.1.4.1.18047.1.11.11616749951522_1.3.6.1.4.1.18047.1.11.11616749951523_0",
+      "lesionNamingNumber": 4,
+      "userId": null,
+      "toolType": "EllipticalRoi",
+      "_id": "d67df506-5bd5-486c-ca01-9081d55ff4e0",
+      "timepointId": "TimepointId",
+      "measurementNumber": 4,
+      "cachedStats": {
+        "area": 1939.9026198493223,
+        "count": 171144,
+        "mean": 401.5956387603422,
+        "variance": 4958.267392282345,
+        "stdDev": 70.41496568402448,
+        "min": 262,
+        "max": 691
+      },
+      "unit": "",
+      "id": 4,
       "viewport": {
-        "scale": 0.13781094527363183,
+        "scale": 0.1111111111111111,
         "translation": {
           "x": 0,
           "y": 0
         },
         "voi": {
-          "windowWidth": 4096,
-          "windowCenter": 2047
+          "windowWidth": 580,
+          "windowCenter": 540
         },
         "invert": false,
         "pixelReplication": false,
@@ -80,35 +206,96 @@
             "y": 1
           },
           "brhc": {
-            "x": 1572,
-            "y": 2010
+            "x": 1996,
+            "y": 2457
           },
-          "rowPixelSpacing": 0.175,
-          "columnPixelSpacing": 0.175,
+          "rowPixelSpacing": 0.10645,
+          "columnPixelSpacing": 0.10645,
           "presentationSizeMode": "NONE"
         }
-      },
-      "id": 2
+      }
     },
+    {
+      "visible": true,
+      "active": false,
+      "invalidated": false,
+      "handles": {
+        "start": {
+          "x": 2286.6520146520143,
+          "y": 1920.4688644688645,
+          "highlight": true,
+          "active": false
+        },
+        "end": {
+          "x": 2841.787545787546,
+          "y": 2880.7032967032965,
+          "highlight": true,
+          "active": false,
+          "moving": false
+        },
+        "initialRotation": 0,
+        "textBox": {
+          "active": false,
+          "hasMoved": false,
+          "movesIndependently": false,
+          "drawnIndependently": true,
+          "allowedOutsideImage": true,
+          "hasBoundingBox": true,
+          "x": 2841.787545787546,
+          "y": 2400.5860805860802,
+          "boundingBox": {
+            "width": 258.0859375,
+            "height": 45,
+            "left": 429,
+            "top": 137.49999999999997
+          }
+        }
+      },
+      "uuid": "f6f9db3f-c2ee-4ce5-b34f-1cb716cda8eb",
+      "PatientID": "AnonymID_DEMO616749948975",
+      "StudyInstanceUID": "1.3.6.1.4.1.18047.1.11.11616749948975",
+      "SeriesInstanceUID": "1.3.6.1.4.1.18047.1.11.11616749949886",
+      "SOPInstanceUID": "1.3.6.1.4.1.18047.1.11.11616749949887",
+      "frameIndex": 0,
+      "imagePath": "1.3.6.1.4.1.18047.1.11.11616749948975_1.3.6.1.4.1.18047.1.11.11616749949886_1.3.6.1.4.1.18047.1.11.11616749949887_0",
+      "lesionNamingNumber": 4,
+      "userId": null,
+      "toolType": "EllipticalRoi",
+      "_id": "b6a321c4-c2d9-9248-05e5-b700f485a9af",
+      "timepointId": "TimepointId",
+      "measurementNumber": 5,
+      "cachedStats": {
+        "area": 1780.9649576936963,
+        "count": 418403,
+        "mean": 1383.1162180959504,
+        "variance": 475241.2451411176,
+        "stdDev": 689.3774330083032,
+        "min": 166,
+        "max": 3901
+      },
+      "unit": "",
+      "id": 5
+    }
+  ],
+  "Length": [
     {
       "visible": true,
       "active": true,
       "invalidated": false,
       "handles": {
         "start": {
-          "x": 901.68345323741,
-          "y": 202.4460431654676,
+          "x": 2961.8168498168498,
+          "y": 1080.2637362637363,
           "highlight": true,
           "active": false
         },
         "end": {
-          "x": 1465.640287769784,
-          "y": 554.3165467625898,
+          "x": 3021.8315018315016,
+          "y": 2835.6923076923076,
           "highlight": true,
-          "active": false,
-          "moving": false
+          "active": true,
+          "moving": true
         },
-        "initialRotation": 0,
         "textBox": {
           "active": false,
           "hasMoved": false,
@@ -116,69 +303,33 @@
           "drawnIndependently": true,
           "allowedOutsideImage": true,
           "hasBoundingBox": true,
-          "x": 1465.640287769784,
-          "y": 378.3812949640287,
+          "x": 3021.8315018315016,
+          "y": 2835.6923076923076,
           "boundingBox": {
-            "width": 258.0859375,
-            "height": 45,
-            "left": 518,
-            "top": 55.999999999999986
+            "width": 91.140625,
+            "height": 25,
+            "left": 441,
+            "top": 176.5
           }
         }
       },
-      "uuid": "5a02ff6e-514f-4615-800c-bfd33c741a8f",
-      "PatientID": "0",
-      "StudyInstanceUID": "1.2.826.0.1.3680043.8.1055.1.20190312112042893.772048187.2439604",
-      "SeriesInstanceUID": "1.2.826.0.1.3680043.8.1055.1.20190312112042898.879155239.2276229",
-      "SOPInstanceUID": "1.2.826.0.1.3680043.8.1055.1.20190312112042891.994604045.3468994",
+      "uuid": "bc5b0f08-43fe-4585-ba35-34596177136b",
+      "_measurementServiceId": "3c98a674-e226-53a4-37bd-302158e65556",
+      "PatientID": "AnonymID_DEMO616749948975",
+      "StudyInstanceUID": "1.3.6.1.4.1.18047.1.11.11616749948975",
+      "SeriesInstanceUID": "1.3.6.1.4.1.18047.1.11.11616749949886",
+      "SOPInstanceUID": "1.3.6.1.4.1.18047.1.11.11616749949887",
       "frameIndex": 0,
-      "imagePath": "1.2.826.0.1.3680043.8.1055.1.20190312112042893.772048187.2439604_1.2.826.0.1.3680043.8.1055.1.20190312112042898.879155239.2276229_1.2.826.0.1.3680043.8.1055.1.20190312112042891.994604045.3468994_0",
-      "lesionNamingNumber": 3,
+      "imagePath": "1.3.6.1.4.1.18047.1.11.11616749948975_1.3.6.1.4.1.18047.1.11.11616749949886_1.3.6.1.4.1.18047.1.11.11616749949887_0",
+      "lesionNamingNumber": 5,
       "userId": null,
-      "toolType": "EllipticalRoi",
-      "_id": "8142cab4-1364-651b-ce3c-4e5254853f5e",
+      "toolType": "Length",
+      "_id": "d246781c-4e76-a270-828d-8ebd946692a3",
       "timepointId": "TimepointId",
-      "measurementNumber": 3,
-      "cachedStats": {
-        "area": 4775.158001603412,
-        "count": 155891,
-        "mean": 1812.3037699418182,
-        "variance": 124403.90767891938,
-        "stdDev": 352.70938133103203,
-        "min": 633,
-        "max": 2901
-      },
-      "viewport": {
-        "scale": 0.20746268656716418,
-        "translation": {
-          "x": 0,
-          "y": 0
-        },
-        "voi": {
-          "windowWidth": 4096,
-          "windowCenter": 2047
-        },
-        "invert": false,
-        "pixelReplication": false,
-        "rotation": 0,
-        "hflip": false,
-        "vflip": false,
-        "labelmap": false,
-        "displayedArea": {
-          "tlhc": {
-            "x": 1,
-            "y": 1
-          },
-          "brhc": {
-            "x": 1572,
-            "y": 2010
-          },
-          "rowPixelSpacing": 0.175,
-          "columnPixelSpacing": 0.175,
-          "presentationSizeMode": "NONE"
-        }
-      },
-      "id": 4
+      "measurementNumber": 6,
+      "length": 114.58755670667078,
+      "unit": "mm",
+      "id": 1
     }
   ]
 }

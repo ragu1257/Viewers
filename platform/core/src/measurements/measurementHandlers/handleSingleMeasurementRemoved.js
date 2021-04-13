@@ -9,7 +9,7 @@ export default function handleSingleMeasurementRemoved({
   toolGroupId,
   toolGroup,
 }) {
-  log.info('CornerstoneToolsMeasurementRemoved');
+  log.info('CornerstoneToolsMeasurementRemoved 123');
   const { measurementData, toolType } = eventData;
 
   const measurementApi = MeasurementApi.Instance;

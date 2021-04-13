@@ -76,7 +76,7 @@ function Header(props) {
             </Link>
           )}
 
-          {children}
+          {/* {children} */}
 
           {hasLink && (
             <Link

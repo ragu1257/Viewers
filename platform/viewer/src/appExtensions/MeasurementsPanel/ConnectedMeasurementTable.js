@@ -334,13 +334,14 @@ function getSaveFunction(serverType) {
       //   })
       // );
       console.log('measurementApi.tools', measurementApi.tools);
+
+      let presentOrNot = false;
       try {
         Object.entries(measurementApi.tools).map(([key, value]) => {
           // console.log('keysss', key, value, value.length);
           if (value.length) {
             value.forEach(async function(arrayItem) {
               console.log(arrayItem, key);
-              // let presentOrNot = false;
               // await fetch('http://localhost:8080/' + key)
               //   .then(res => {
               //     return res.json();
@@ -348,15 +349,19 @@ function getSaveFunction(serverType) {
               //   .then(data => {
               //     console.log(
               //       'yaaa hohoooooo 4444',
-              //       JSON.stringify(data).includes(arrayItem._id)
+              //       JSON.stringify(data).includes(arrayItem.lesionNamingNumber), arrayItem.lesionNamingNumber
               //     );
-              //     presentOrNot = JSON.stringify(data).includes(arrayItem._id);
+              //     presentOrNot = JSON.stringify(data).includes(
+              //       arrayItem.lesionNamingNumber
+              //     );
               //     // tempMeasurements = data;
               //   });
               // console.log('presentOrNot', presentOrNot);
               // if (presentOrNot) {
               //   await fetch(
-              //     'http://localhost:8080/' + key + '?' + arrayItem._id,
+              //     'http://localhost:8080/' +
+              //       key +
+              //       `/${arrayItem.lesionNamingNumber}`,
               //     {
               //       method: 'PUT',
               //       headers: {
@@ -364,19 +369,21 @@ function getSaveFunction(serverType) {
               //       },
               //       body: JSON.stringify(arrayItem),
               //     }
-              //   );
-              // await fetch(
-              //   'http://localhost:8080/' + key,
-              //   {
-              //     method: 'POST',
-              //     headers: {
-              //       'Content-Type': 'application/json',
-              //     },
-              //     body: JSON.stringify(arrayItem),
-              //   }
-              // ).then(data => {
-              //   console.log('data added for', arrayItem._id);
-              // });
+              //   ).then(data => {
+              //     console.log('data added for', arrayItem.lesionNamingNumber);
+              //   });
+                // await fetch(
+                //   'http://localhost:8080/' + key,
+                //   {
+                //     method: 'POST',
+                //     headers: {
+                //       'Content-Type': 'application/json',
+                //     },
+                //     body: JSON.stringify(arrayItem),
+                //   }
+                // ).then(data => {
+                //   console.log('data added for', arrayItem._id);
+                // });
               // } else {
               //   await fetch('http://localhost:8080/' + key, {
               //     method: 'POST',
@@ -419,7 +426,10 @@ function getShowMeasurement(serverType) {
       return res.json();
     })
     .then(data => {
-      console.log('yaaa hohoooooo getting data', data);
+      console.log(
+        'yaaa hohoooooo getting data connected Measurement table',
+        data
+      );
       tempMeasurements = data;
     });
   if (serverType === 'dicomWeb') {
@@ -633,14 +643,19 @@ const mergeProps = (propsFromState, propsFromDispatch, ownProps) => {
     },
     onDeleteClick: async (event, measurementData) => {
       const { MeasurementHandlers } = OHIF.measurements;
-console.log("delete called",measurementData);
-     await fetch("http://localhost:8080/"+measurementData.toolType + `/${measurementData.lesionNamingNumber}`  , {
-        method: "DELETE"
-        // headers: {
-        //   "Content-Type": "application/json"
-        // },
-        // body: JSON.stringify(measurementApi)
-      })
+      console.log('delete called', measurementData);
+      await fetch(
+        'http://localhost:8080/' +
+          measurementData.toolType +
+          `/${measurementData.lesionNamingNumber}`,
+        {
+          method: 'DELETE',
+          // headers: {
+          //   "Content-Type": "application/json"
+          // },
+          // body: JSON.stringify(measurementApi)
+        }
+      );
 
       MeasurementHandlers.onRemoved({
         detail: {

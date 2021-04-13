@@ -26,8 +26,10 @@ const ToolContextMenu = ({
     {
       label: 'Delete measurement',
       actionType: 'Delete',
-      action: ({ nearbyToolData, eventData }) =>
-        onDelete(nearbyToolData, eventData),
+      action: ({ nearbyToolData, eventData }) =>{
+      const { tool: measurementData } = nearbyToolData;
+        onDelete(nearbyToolData, eventData, measurementData);
+      },
     },
     {
       label: 'Relabel',
