@@ -342,7 +342,7 @@ class Viewer extends Component {
           </div>
 
           {/* RIGHT */}
-          {/* <ErrorBoundaryDialog context="RightSidePanel">
+          <ErrorBoundaryDialog context="RightSidePanel">
             <SidePanel from="right" isOpen={this.state.isRightSidePanelOpen}>
               {VisiblePanelRight && (
                 <VisiblePanelRight
@@ -357,7 +357,7 @@ class Viewer extends Component {
                 />
               )}
             </SidePanel>
-          </ErrorBoundaryDialog> */}
+          </ErrorBoundaryDialog>
         </div>
       </>
     );

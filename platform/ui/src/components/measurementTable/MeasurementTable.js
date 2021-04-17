@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import { ScrollableArea } from './../../ScrollableArea/ScrollableArea.js';
 import { TableList } from './../tableList';
 import { Tooltip } from './../tooltip';
+import { QuestionRound } from './QuestionRound/QuestionRound';
 
 class MeasurementTable extends Component {
   static propTypes = {
@@ -40,7 +41,7 @@ class MeasurementTable extends Component {
   };
 
   render() {
-    const { overallWarnings, saveFunction,showMeasurement, t } = this.props;
+    const { overallWarnings, saveFunction, showMeasurement, t } = this.props;
     const hasOverallWarnings = overallWarnings.warningList.length > 0;
 
     return (
@@ -78,6 +79,9 @@ class MeasurementTable extends Component {
         <ScrollableArea>
           <div>{this.getMeasurementsGroups()}</div>
         </ScrollableArea>
+
+          <QuestionRound />
+
         <div className="measurementTableFooter">
           {saveFunction && (
             <button
@@ -108,7 +112,7 @@ class MeasurementTable extends Component {
 
   saveFunction = async event => {
     const { saveFunction, onSaveComplete } = this.props;
-    console.log("these are the props on click save measurements", this.props);
+    console.log('these are the props on click save measurements', this.props);
     if (saveFunction) {
       try {
         const result = await saveFunction();
@@ -131,7 +135,7 @@ class MeasurementTable extends Component {
     }
   };
   showMeasurement = async event => {
-    console.log("it is clicked");
+    console.log('it is clicked');
     const { showMeasurement } = this.props;
     showMeasurement();
     // console.log("these are the props on click save measurements", this.props);

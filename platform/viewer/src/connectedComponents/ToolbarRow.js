@@ -197,13 +197,13 @@ class ToolbarRow extends Component {
             className="pull-right m-t-1 rm-x-1"
             style={{ marginLeft: 'auto' }}
           >
-            {/* {this.buttonGroups.right.length && (
+            {this.buttonGroups.right.length && (
               <RoundedButtonGroup
                 options={this.buttonGroups.right}
                 value={this.props.selectedRightSidePanel || ''}
                 onValueChanged={onPressRight}
               />
-            )} */}
+            )}
           </div>
         </div>
       </>
