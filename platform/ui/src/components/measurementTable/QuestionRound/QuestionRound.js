@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { makeStyles } from '@material-ui/core/styles';
+
+// import { useForm, useStep } from "react-hooks-helper";
 import {
   Stepper,
   Step,
@@ -9,6 +11,7 @@ import {
   Typography,
   Button,
 } from '@material-ui/core';
+import StepOne from './StepOne';
 
 const useStyles = makeStyles({
   root: {
@@ -21,9 +24,27 @@ const useStyles = makeStyles({
   },
 });
 
+const defaultData = {
+  firstName: 'Jane',
+  lastName: 'Doe',
+  nickName: 'Jan',
+  address: '200 South Main St',
+  city: 'Anytown',
+  state: 'CA',
+  zip: '90505',
+  email: 'email@domain.com',
+  age: 10,
+  gender:'',
+  phone: '+61 4252 454 332',
+};
+
 export const QuestionRound = () => {
   const [activeStep, setActiveStep] = useState(0);
   const { register, handleSubmit } = useForm();
+  const [formData, setForm] = useState(defaultData);
+  const [name, setname] = useState('');
+
+  const props = { formData, setForm };
 
   function getSteps() {
     return ['sign up', 'choose plan', 'checkout'];
@@ -36,7 +57,7 @@ export const QuestionRound = () => {
   };
 
   const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    setActiveStep(prevActiveStep => prevActiveStep - 1);
   };
 
   const handleReset = () => {
@@ -45,10 +66,20 @@ export const QuestionRound = () => {
 
   const steps = getSteps();
 
+  const handleChange = input => e => {
+    console.log('bottu clicked', input, e);
+    e.persist();
+    setForm(
+      formData => ({ ...formData, [input]: e.target.value })
+    );
+  };
+  const { firstName, lastName, nickName, address, city, age, gender } = formData;
+  const values = { firstName, lastName, nickName, address, city, age, gender };
+
   function getStepsContent(stepIndex) {
     switch (stepIndex) {
       case 0:
-        return 'Step One (sign Up)';
+        return <StepOne handleChange={handleChange} values={values} />;
       case 1:
         return 'Step Two (choose plan)';
       case 2:
@@ -80,12 +111,16 @@ export const QuestionRound = () => {
               Reset
             </Button>
           </div>
-        )  : (
+        ) : (
           <>
             {getStepsContent(activeStep)}
-            <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
-                Back
-              </Button>
+            <Button
+              disabled={activeStep === 0}
+              onClick={handleBack}
+              className={classes.button}
+            >
+              Back
+            </Button>
             <Button className={classes.button} onClick={handleNext}>
               {activeStep === steps.length ? 'Finish' : 'Next'}
             </Button>
