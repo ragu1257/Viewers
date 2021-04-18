@@ -76,9 +76,9 @@ class MeasurementTable extends Component {
           )}
           {this.getTimepointsHeader()}
         </div>
-        <ScrollableArea>
+        {/* <ScrollableArea>
           <div>{this.getMeasurementsGroups()}</div>
-        </ScrollableArea>
+        </ScrollableArea> */}
         <ScrollableArea>
           <QuestionRound />
           </ScrollableArea>

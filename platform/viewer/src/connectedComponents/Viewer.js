@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import foo from './foo.json';
+import { text } from './foo.js'; // Relative path to your File
 
 import OHIF, { MODULE_TYPES, DICOMSR } from '@ohif/core';
 import { withDialog } from '@ohif/ui';
@@ -93,6 +95,7 @@ class Viewer extends Component {
     selectedRightSidePanel: '',
     selectedLeftSidePanel: 'studies', // TODO: Don't hardcode this
     thumbnails: [],
+    text: '',
   };
 
   componentWillUnmount() {
@@ -167,10 +170,11 @@ class Viewer extends Component {
   };
 
   componentDidMount() {
+    // console.log(text);
+
     const { studies, isStudyLoaded } = this.props;
     const { TimepointApi, MeasurementApi } = OHIF.measurements;
     const currentTimepointId = 'TimepointId';
-
     const timepointApi = new TimepointApi(currentTimepointId, {
       onTimepointsUpdated: this.onTimepointsUpdated,
     });
@@ -178,7 +182,6 @@ class Viewer extends Component {
     const measurementApi = new MeasurementApi(timepointApi, {
       onMeasurementsUpdated: this.onMeasurementsUpdated,
     });
-
     this.currentTimepointId = currentTimepointId;
     this.timepointApi = timepointApi;
     this.measurementApi = measurementApi;
@@ -328,6 +331,25 @@ class Viewer extends Component {
                   studyMetadata={this.props.studies}
                 />
               )}
+            </SidePanel>
+          </ErrorBoundaryDialog>
+          <ErrorBoundaryDialog context="LeftSidePanelTrial">
+            <SidePanel from="left" isOpen={true}>
+              <pre style={{ color: '#fff', whiteSpace: 'pre-wrap' }}>
+                {text}
+              </pre>
+              {/* {VisiblePanelLeft ? (
+                <VisiblePanelLeft
+                  viewports={this.props.viewports}
+                  studies={this.props.studies}
+                  activeIndex={this.props.activeViewportIndex}
+                />
+              ) : (
+                <ConnectedStudyBrowser
+                  studies={this.state.thumbnails}
+                  studyMetadata={this.props.studies}
+                />
+              )} */}
             </SidePanel>
           </ErrorBoundaryDialog>
 
