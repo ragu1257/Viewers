@@ -79,9 +79,9 @@ class MeasurementTable extends Component {
         <ScrollableArea>
           <div>{this.getMeasurementsGroups()}</div>
         </ScrollableArea>
-
+        <ScrollableArea>
           <QuestionRound />
-
+          </ScrollableArea>
         <div className="measurementTableFooter">
           {saveFunction && (
             <button
