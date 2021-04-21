@@ -89,22 +89,49 @@ const definitions = [
     commandName: 'setToolActive',
     commandOptions: { toolName: 'ArrowAnnotate' },
   },
+  // {
+  //   id: 'Angle',
+  //   label: 'Angle',
+  //   icon: 'angle-left',
+  //   //
+  //   type: TOOLBAR_BUTTON_TYPES.SET_TOOL_ACTIVE,
+  //   commandName: 'setToolActive',
+  //   commandOptions: { toolName: 'Angle' },
+  // },
+  // {
+  //   id: 'Reset',
+  //   label: 'Reset',
+  //   icon: 'reset',
+  //   //
+  //   type: TOOLBAR_BUTTON_TYPES.COMMAND,
+  //   commandName: 'resetViewport',
+  // },
+
   {
-    id: 'Angle',
-    label: 'Angle',
-    icon: 'angle-left',
+    id: 'Clear',
+    label: 'Clear',
+    icon: 'trash',
+    //
+    type: TOOLBAR_BUTTON_TYPES.COMMAND,
+    commandName: 'clearAnnotations',
+  },
+  {
+    id: 'EllipticalRoi',
+    label: 'Ellipse',
+    icon: 'circle-o',
     //
     type: TOOLBAR_BUTTON_TYPES.SET_TOOL_ACTIVE,
     commandName: 'setToolActive',
-    commandOptions: { toolName: 'Angle' },
+    commandOptions: { toolName: 'EllipticalRoi' },
   },
   {
-    id: 'Reset',
-    label: 'Reset',
-    icon: 'reset',
+    id: 'FreehandRoi',
+    label: 'Freehand',
+    icon: 'circle-o',
     //
-    type: TOOLBAR_BUTTON_TYPES.COMMAND,
-    commandName: 'resetViewport',
+    type: TOOLBAR_BUTTON_TYPES.SET_TOOL_ACTIVE,
+    commandName: 'setToolActive',
+    commandOptions: { toolName: 'FreehandRoi' },
   },
   // {
   //   id: 'Cine',
@@ -130,60 +157,60 @@ const definitions = [
         commandName: 'setToolActive',
         commandOptions: { toolName: 'Magnify' },
       },
-      {
-        id: 'WwwcRegion',
-        label: 'ROI Window',
-        icon: 'stop',
-        //
-        type: TOOLBAR_BUTTON_TYPES.SET_TOOL_ACTIVE,
-        commandName: 'setToolActive',
-        commandOptions: { toolName: 'WwwcRegion' },
-      },
-      {
-        id: 'DragProbe',
-        label: 'Probe',
-        icon: 'dot-circle',
-        //
-        type: TOOLBAR_BUTTON_TYPES.SET_TOOL_ACTIVE,
-        commandName: 'setToolActive',
-        commandOptions: { toolName: 'DragProbe' },
-      },
-      {
-        id: 'EllipticalRoi',
-        label: 'Ellipse',
-        icon: 'circle-o',
-        //
-        type: TOOLBAR_BUTTON_TYPES.SET_TOOL_ACTIVE,
-        commandName: 'setToolActive',
-        commandOptions: { toolName: 'EllipticalRoi' },
-      },
-      {
-        id: 'RectangleRoi',
-        label: 'Rectangle',
-        icon: 'square-o',
-        //
-        type: TOOLBAR_BUTTON_TYPES.SET_TOOL_ACTIVE,
-        commandName: 'setToolActive',
-        commandOptions: { toolName: 'RectangleRoi' },
-      },
+      // {
+      //   id: 'WwwcRegion',
+      //   label: 'ROI Window',
+      //   icon: 'stop',
+      //   //
+      //   type: TOOLBAR_BUTTON_TYPES.SET_TOOL_ACTIVE,
+      //   commandName: 'setToolActive',
+      //   commandOptions: { toolName: 'WwwcRegion' },
+      // },
+      // {
+      //   id: 'DragProbe',
+      //   label: 'Probe',
+      //   icon: 'dot-circle',
+      //   //
+      //   type: TOOLBAR_BUTTON_TYPES.SET_TOOL_ACTIVE,
+      //   commandName: 'setToolActive',
+      //   commandOptions: { toolName: 'DragProbe' },
+      // },
+      // {
+      //   id: 'EllipticalRoi',
+      //   label: 'Ellipse',
+      //   icon: 'circle-o',
+      //   //
+      //   type: TOOLBAR_BUTTON_TYPES.SET_TOOL_ACTIVE,
+      //   commandName: 'setToolActive',
+      //   commandOptions: { toolName: 'EllipticalRoi' },
+      // },
+      // {
+      //   id: 'RectangleRoi',
+      //   label: 'Rectangle',
+      //   icon: 'square-o',
+      //   //
+      //   type: TOOLBAR_BUTTON_TYPES.SET_TOOL_ACTIVE,
+      //   commandName: 'setToolActive',
+      //   commandOptions: { toolName: 'RectangleRoi' },
+      // },
 
-      {
-        id: 'FreehandRoi',
-        label: 'Freehand',
-        icon: 'circle-o',
-        //
-        type: TOOLBAR_BUTTON_TYPES.SET_TOOL_ACTIVE,
-        commandName: 'setToolActive',
-        commandOptions: { toolName: 'FreehandRoi' },
-      },
-      {
-        id: 'Invert',
-        label: 'Invert',
-        icon: 'adjust',
-        //
-        type: TOOLBAR_BUTTON_TYPES.COMMAND,
-        commandName: 'invertViewport',
-      },
+      // {
+      //   id: 'FreehandRoi',
+      //   label: 'Freehand',
+      //   icon: 'circle-o',
+      //   //
+      //   type: TOOLBAR_BUTTON_TYPES.SET_TOOL_ACTIVE,
+      //   commandName: 'setToolActive',
+      //   commandOptions: { toolName: 'FreehandRoi' },
+      // },
+      // {
+      //   id: 'Invert',
+      //   label: 'Invert',
+      //   icon: 'adjust',
+      //   //
+      //   type: TOOLBAR_BUTTON_TYPES.COMMAND,
+      //   commandName: 'invertViewport',
+      // },
       {
         id: 'RotateRight',
         label: 'Rotate Right',
@@ -208,34 +235,34 @@ const definitions = [
         type: TOOLBAR_BUTTON_TYPES.COMMAND,
         commandName: 'flipViewportVertical',
       },
-      {
-        id: 'Clear',
-        label: 'Clear',
-        icon: 'trash',
-        //
-        type: TOOLBAR_BUTTON_TYPES.COMMAND,
-        commandName: 'clearAnnotations',
-      },
-      {
-        id: 'Bidirectional',
-        label: 'Bidirectional',
-        icon: 'measure-target',
-        //
-        type: TOOLBAR_BUTTON_TYPES.SET_TOOL_ACTIVE,
-        commandName: 'setToolActive',
-        commandOptions: { toolName: 'Bidirectional' },
-      },
-      {
-        id: 'Download',
-        label: 'Download',
-        icon: 'create-screen-capture',
-        //
-        type: TOOLBAR_BUTTON_TYPES.BUILT_IN,
-        options: {
-          behavior: TOOLBAR_BUTTON_BEHAVIORS.DOWNLOAD_SCREEN_SHOT,
-          togglable: true,
-        },
-      },
+      // {
+      //   id: 'Clear',
+      //   label: 'Clear',
+      //   icon: 'trash',
+      //   //
+      //   type: TOOLBAR_BUTTON_TYPES.COMMAND,
+      //   commandName: 'clearAnnotations',
+      // },
+      // {
+      //   id: 'Bidirectional',
+      //   label: 'Bidirectional',
+      //   icon: 'measure-target',
+      //   //
+      //   type: TOOLBAR_BUTTON_TYPES.SET_TOOL_ACTIVE,
+      //   commandName: 'setToolActive',
+      //   commandOptions: { toolName: 'Bidirectional' },
+      // },
+      // {
+      //   id: 'Download',
+      //   label: 'Download',
+      //   icon: 'create-screen-capture',
+      //   //
+      //   type: TOOLBAR_BUTTON_TYPES.BUILT_IN,
+      //   options: {
+      //     behavior: TOOLBAR_BUTTON_BEHAVIORS.DOWNLOAD_SCREEN_SHOT,
+      //     togglable: true,
+      //   },
+      // },
     ],
   },
   {

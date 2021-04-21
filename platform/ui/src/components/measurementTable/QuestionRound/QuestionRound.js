@@ -17,10 +17,11 @@ const useStyles = makeStyles({
   root: {
     width: '100%',
     margin: '6rem auto',
-    border: '1px solid red',
+    border: '1px solid #333',
+    background: '#fff',
   },
   button: {
-    color: '#fff',
+    // color: '#fff',
   },
 });
 
@@ -81,7 +82,7 @@ export const QuestionRound = () => {
       case 0:
         return <StepOne handleChange={handleChange} values={values} />;
       case 1:
-        return 'Step Two (choose plan)';
+        return values.gender == "male"? 'Step Two (choose plan)' : "female";
       case 2:
         return 'Step three (checkout)';
       default:
@@ -94,13 +95,13 @@ export const QuestionRound = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Stepper activeStep={activeStep}>
+      {/* <Stepper activeStep={activeStep}>
         {steps.map(label => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
           </Step>
         ))}
-      </Stepper>
+      </Stepper> */}
       <div className={classes.button}>
         {activeStep === steps.length ? (
           <div>

@@ -1,7 +1,7 @@
 /* Viewer Route */
 .entry-header {
-  padding: 10px 15px;
-  height: var(--top-bar-height);
+  padding: 0px 15px;
+  /* height: var(--top-bar-height); */
 }
 
 .header-left-box {

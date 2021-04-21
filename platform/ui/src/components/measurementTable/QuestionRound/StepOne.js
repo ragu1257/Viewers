@@ -21,14 +21,14 @@ const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
     margin: '6rem auto',
-    border: '1px solid red',
+    border: '1px solid #333',
   },
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
   },
   button: {
-    color: '#fff',
+    // color: '#fff',
   },
 }));
 
@@ -37,7 +37,7 @@ const StepOne = ({ handleChange, values }) => {
   console.log('this is step 1', values);
   return (
     <div className={style.button}>
-      <TextField
+      {/* <TextField
         hinText="Enter your first name"
         onChange={handleChange('firstName')}
         defaultValue={values.firstName}
@@ -59,7 +59,7 @@ const StepOne = ({ handleChange, values }) => {
           <MenuItem value={20}>Twenty</MenuItem>
           <MenuItem value={30}>Thirty</MenuItem>
         </Select>
-      </FormControl>
+      </FormControl> */}
       <FormControl component="fieldset">
         <FormLabel component="legend">Gender</FormLabel>
         <RadioGroup
