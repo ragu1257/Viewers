@@ -16,6 +16,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
 import { makeStyles } from '@material-ui/core/styles';
+import './Stepper.css';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -34,7 +35,7 @@ const useStyles = makeStyles(theme => ({
 
 const StepOne = ({ handleChange, values }) => {
   const style = useStyles();
-  console.log('this is step 1', values);
+  // console.log('this is step 1', values);
   return (
     <div className={style.button}>
       {/* <TextField
@@ -60,19 +61,31 @@ const StepOne = ({ handleChange, values }) => {
           <MenuItem value={30}>Thirty</MenuItem>
         </Select>
       </FormControl> */}
-      <FormControl component="fieldset">
+      {/* <FormControl component="fieldset">
         <FormLabel component="legend">Gender</FormLabel>
         <RadioGroup
           aria-label="gender"
           name="gender"
           value={values.gender}
           onChange={handleChange('gender')}
-        >
-          <FormControlLabel value="female" control={<Radio />} label="Female" />
+        > */}
+      {/* <FormControlLabel value="female" control={<Radio />} label="Female" />
           <FormControlLabel value="male" control={<Radio />} label="Male" />
-          <FormControlLabel value="other" control={<Radio />} label="Other" />
-        </RadioGroup>
-      </FormControl>
+          <FormControlLabel value="other" control={<Radio />} label="Other" /> */}
+      <p>Are there any findings?</p>
+      <div
+        className="radio-toolbar"
+        value={values.findings}
+        onChange={handleChange('findings')}
+      >
+        <input type="radio" id="radio1" name="radios" value="Yes" />
+        <label htmlFor="radio1">Yes</label>
+
+        <input type="radio" id="radio2" name="radios" value="No" />
+        <label htmlFor="radio2">No</label>
+      </div>
+      {/* </RadioGroup>
+      </FormControl> */}
     </div>
   );
 };

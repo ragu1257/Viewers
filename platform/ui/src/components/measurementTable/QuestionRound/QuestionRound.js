@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { makeStyles } from '@material-ui/core/styles';
-
+import FindingDetails from './FindingDetails';
+import ReacordFindings from './ReacordFindings';
 // import { useForm, useStep } from "react-hooks-helper";
 import {
   Stepper,
@@ -18,7 +19,7 @@ const useStyles = makeStyles({
     width: '100%',
     margin: '6rem auto',
     border: '1px solid #333',
-    background: '#fff',
+    background: '#1fa5d6',
   },
   button: {
     // color: '#fff',
@@ -26,35 +27,38 @@ const useStyles = makeStyles({
 });
 
 const defaultData = {
-  firstName: 'Jane',
-  lastName: 'Doe',
-  nickName: 'Jan',
-  address: '200 South Main St',
-  city: 'Anytown',
-  state: 'CA',
-  zip: '90505',
-  email: 'email@domain.com',
-  age: 10,
-  gender:'',
-  phone: '+61 4252 454 332',
+  findings: '',
+  age: '',
+  breast_density: '',
+  picture_quality: '',
+  total_findings: null,
 };
 
 export const QuestionRound = () => {
   const [activeStep, setActiveStep] = useState(0);
   const { register, handleSubmit } = useForm();
+  const [disableButton, setDisableButton] = useState(false);
   const [formData, setForm] = useState(defaultData);
   const [name, setname] = useState('');
 
   const props = { formData, setForm };
 
   function getSteps() {
-    return ['sign up', 'choose plan', 'checkout'];
+    return [
+      'findings',
+      'age',
+      'nipple_position',
+      'pictorial_muscle',
+      'total_findings',
+      'ReacordFindings',
+    ];
   }
 
   const handleNext = () => {
-    console.log('clicked');
     setActiveStep(prevActiveStep => prevActiveStep + 1);
-    console.log('this is active step', activeStep);
+    if (parseInt(formData.total_findings) > 0) {
+      setDisableButton(true);
+    }
   };
 
   const handleBack = () => {
@@ -70,21 +74,60 @@ export const QuestionRound = () => {
   const handleChange = input => e => {
     console.log('bottu clicked', input, e);
     e.persist();
-    setForm(
-      formData => ({ ...formData, [input]: e.target.value })
-    );
+    setForm(formData => ({ ...formData, [input]: e.target.value }));
   };
-  const { firstName, lastName, nickName, address, city, age, gender } = formData;
-  const values = { firstName, lastName, nickName, address, city, age, gender };
+  const {
+    findings,
+    age,
+    breast_density,
+    picture_quality,
+    total_findings,
+  } = formData;
+  const values = {
+    findings,
+    age,
+    breast_density,
+    picture_quality,
+    total_findings,
+  };
 
   function getStepsContent(stepIndex) {
     switch (stepIndex) {
       case 0:
         return <StepOne handleChange={handleChange} values={values} />;
       case 1:
-        return values.gender == "male"? 'Step Two (choose plan)' : "female";
+        return values.findings == 'No' ? null : (
+          <FindingDetails handleChange={handleChange} values={values} />
+        );
       case 2:
-        return 'Step three (checkout)';
+        return (
+          <div>
+            <h2>Nipple position</h2>
+            <p>Please Define for all the 4 images</p>
+          </div>
+        );
+      case 3:
+        return (
+          <div>
+            <h2>Pictorial Muscle</h2>
+            <p>Please Draw a Line</p>
+          </div>
+        );
+      case 4:
+        return (
+          <div>
+            <p>How many findings?</p>
+            <TextField
+              style={{ margin: 20 }}
+              hintext="total_findings"
+              label="Total Findings"
+              onChange={handleChange('total_findings')}
+              defaultValue={values.total_findings}
+            />
+          </div>
+        );
+      case 5:
+        return parseInt(values.total_findings) > 0 ? <ReacordFindings /> : null;
       default:
         return 'unknown step';
     }
@@ -93,6 +136,16 @@ export const QuestionRound = () => {
     console.log('data after form submit', data);
   };
   const classes = useStyles();
+
+  useEffect(() => {
+    // Update the document title using the browser API
+    console.log(
+      'this is useEFfect',
+      formData,
+      parseInt(formData.total_findings)
+    );
+  }, [formData]);
+
   return (
     <div className={classes.root}>
       {/* <Stepper activeStep={activeStep}>
@@ -104,7 +157,7 @@ export const QuestionRound = () => {
       </Stepper> */}
       <div className={classes.button}>
         {activeStep === steps.length ? (
-          <div>
+          <div style={{ marginTop: 60 }}>
             <Typography className={classes.button}>
               All steps completed - you&apos;re finished
             </Typography>
@@ -115,57 +168,31 @@ export const QuestionRound = () => {
         ) : (
           <>
             {getStepsContent(activeStep)}
-            <Button
-              disabled={activeStep === 0}
-              onClick={handleBack}
-              className={classes.button}
-            >
-              Back
-            </Button>
-            <Button className={classes.button} onClick={handleNext}>
-              {activeStep === steps.length ? 'Finish' : 'Next'}
-            </Button>
+            {disableButton ? null : (
+              <div
+                className="testing123"
+                style={{ marginTop: 60, textAlign: 'center' }}
+              >
+                <Button
+                  disabled={activeStep === 0}
+                  onClick={handleBack}
+                  className={classes.button}
+                >
+                  Back
+                </Button>
+                {values.findings == 'No' ||
+                parseInt(values.total_findings) == 0 ? (
+                  <Button className={classes.button}>Go to next finding</Button>
+                ) : (
+                  <Button className={classes.button} onClick={handleNext}>
+                    {activeStep === steps.length ? 'Finish' : 'Next'}
+                  </Button>
+                )}
+              </div>
+            )}
           </>
         )}
       </div>
-      {/* <form onSubmit= {handleSubmit(onSubmit)}>
-        <div className="form-group">
-          <label htmlFor='username' id="usernameLabel">Username</label>
-          <TextField
-            className="form-control"
-            type="text"
-            name="username"
-            {...register("username")}
-            required
-          />
-          <div className="error" id="usernameError" />
-        </div>
-        <div className="form-group">
-          <label htmlFor='password' id="passwordLabel">Password</label>
-          <TextField
-            className="form-control"
-            type="password"
-            name="password"
-
-            {...register("password")}
-            required
-          />
-          <div className="error" id="passwordError" />
-        </div>
-        <div className="form-group">
-          <label htmlFor='passwordConfirm' id="passwordConfirmLabel">Confirm Password</label>
-          <TextField
-            className="form-control"
-            type="password"
-            name="passwordConfirm"
-
-            {...register("confirmusername")}
-            required
-          />
-          <div className="error" id="passwordConfirmError" />
-        </div>
-        <button type="submit" className="btn btn-primary">submit</button>
-      </form> */}
     </div>
   );
 };
