@@ -1,0 +1,23 @@
+0 silly argv {
+0 silly argv   _: [ 'run' ],
+0 silly argv   stream: true,
+0 silly argv   lernaVersion: '3.18.3',
+0 silly argv   '$0': 'node_modules\\lerna\\cli.js',
+0 silly argv   script: 'dev:orthanc'
+0 silly argv }
+1 notice cli v3.18.3
+2 verbose rootPath E:\git repo\Viewers
+3 info versioning independent
+4 info Executing command in 1 package: "yarn run dev:orthanc"
+5 silly npmRunScript.stream [ 'dev:orthanc', [], '@ohif/viewer' ]
+6 silly getExecOpts E:\git repo\Viewers\platform\viewer undefined
+7 error MaxBufferError: stderr maxBuffer exceeded
+7 error     at PassThrough.<anonymous> (E:\git repo\Viewers\node_modules\get-stream\index.js:41:19)
+7 error     at PassThrough.emit (events.js:327:22)
+7 error     at addChunk (_stream_readable.js:295:12)
+7 error     at readableAddChunk (_stream_readable.js:267:11)
+7 error     at PassThrough.Readable.push (_stream_readable.js:212:10)
+7 error     at PassThrough.Transform.push (_stream_transform.js:152:32)
+7 error     at PassThrough.afterTransform (_stream_transform.js:96:10)
+7 error     at PassThrough._transform (_stream_passthrough.js:46:3)
+7 error     at PassThrough.Transform._read (_stream_transform.js:191:10)
