@@ -122,6 +122,7 @@ export const QuestionRound = () => {
   const updateCurrentFinding = (active, data) => e => {
     console.log('updateCurrentFinding', active, data, e);
     let finding = {};
+    finding["finding"+active] = data
     defaultData.findingsArray.push(finding);
     setActiveStep(5);
   };
