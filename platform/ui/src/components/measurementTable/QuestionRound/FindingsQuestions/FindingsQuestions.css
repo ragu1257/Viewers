@@ -1,0 +1,13 @@
+.MuiFormControlLabel-root {
+  display: block !important;
+  width: 95%;
+  background: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 0px;
+  margin: 5px auto !important;
+}
+
+.MuiCheckbox-colorPrimary.Mui-checked {
+  color: #fff !important;
+}
