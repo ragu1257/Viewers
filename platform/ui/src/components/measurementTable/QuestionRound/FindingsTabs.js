@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './Stepper.css';
 
 const FindingsTabs = ({ handleChangeReport, total_findings }) => {
   const [findingArray, setfindingArray] = useState([]);
@@ -11,9 +12,13 @@ const FindingsTabs = ({ handleChangeReport, total_findings }) => {
   }, []);
   return (
     <div>
-      <ul>
+      <ul className="finding-list">
         {findingArray.map((value, index) => {
-          return <li id={index} key={index} onClick={handleChangeReport(index+1)}>{value}</li>;
+          return (
+            <li id={index} key={index} onClick={handleChangeReport(index + 1)}>
+              {value}
+            </li>
+          );
         })}
       </ul>
     </div>
