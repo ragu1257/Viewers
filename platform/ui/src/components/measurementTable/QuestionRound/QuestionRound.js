@@ -14,6 +14,7 @@ import {
 } from '@material-ui/core';
 import StepOne from './StepOne';
 import FindingsTabs from './FindingsTabs';
+import TotalFindings from './TotalFindings';
 
 const useStyles = makeStyles({
   root: {
@@ -73,10 +74,10 @@ export const QuestionRound = () => {
 
   // const steps = getSteps();
   const steps = [
-    'findings',
     'age',
     'nipple_position',
     'pictorial_muscle',
+    'findings',
     'total_findings',
     'FindingsTabs',
     ReacordFindings,
@@ -122,7 +123,7 @@ export const QuestionRound = () => {
   const updateCurrentFinding = (active, data) => e => {
     console.log('updateCurrentFinding', active, data, e);
     let finding = {};
-    finding["finding"+active] = data
+    finding['finding' + active] = data;
     defaultData.findingsArray.push(finding);
     setActiveStep(5);
   };
@@ -130,36 +131,37 @@ export const QuestionRound = () => {
   function getStepsContent(stepIndex) {
     switch (stepIndex) {
       case 0:
-        return <StepOne handleChange={handleChange} values={values} />;
-      case 1:
         return values.findings == 'No' ? null : (
           <FindingDetails handleChange={handleChange} values={values} />
         );
-      case 2:
+      case 1:
         return (
           <div>
             <h2>Nipple position</h2>
             <p>Please Define for all the 4 images</p>
           </div>
         );
-      case 3:
+      case 2:
         return (
           <div>
             <h2>Pictorial Muscle</h2>
             <p>Please Draw a Line</p>
           </div>
         );
+      case 3:
+        return <StepOne handleChange={handleChange} values={values} />;
       case 4:
         return (
           <div>
             <p>How many findings?</p>
-            <TextField
+            <TotalFindings handleChange={handleChange} values={values} />
+            {/* <TextField
               style={{ margin: 20 }}
               hintext="total_findings"
               label="Total Findings"
               onChange={handleChange('total_findings')}
               defaultValue={values.total_findings}
-            />
+            /> */}
           </div>
         );
       case 5:
@@ -241,7 +243,7 @@ export const QuestionRound = () => {
                 </Button>
                 {values.findings == 'No' ||
                 parseInt(values.total_findings) == 0 ? (
-                  <Button className={classes.button}>Go to next finding</Button>
+                  <Button className={classes.button}>Go to next study</Button>
                 ) : (
                   <Button className={classes.button} onClick={handleNext}>
                     {activeStep === steps.length ? 'Finish' : 'Next'}

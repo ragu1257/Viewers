@@ -62,5 +62,59 @@
       "id": 3
     }
   ],
-  "Length": []
+  "Length": [
+    {
+      "visible": true,
+      "active": true,
+      "invalidated": false,
+      "handles": {
+        "start": {
+          "x": 1991.6800000000003,
+          "y": 2539.52,
+          "highlight": true,
+          "active": false
+        },
+        "end": {
+          "x": 2712.576,
+          "y": 2162.688,
+          "highlight": true,
+          "active": true,
+          "moving": true
+        },
+        "textBox": {
+          "active": false,
+          "hasMoved": false,
+          "movesIndependently": false,
+          "drawnIndependently": true,
+          "allowedOutsideImage": true,
+          "hasBoundingBox": true,
+          "x": 2712.576,
+          "y": 2162.688,
+          "boundingBox": {
+            "width": 82.15625,
+            "height": 25,
+            "left": 441,
+            "top": 119.5
+          }
+        }
+      },
+      "uuid": "fe0c6bed-8a33-41d1-834b-d8cb811c642f",
+      "_measurementServiceId": "cbd071d4-6ac1-ca03-dddb-c8c84f96d893",
+      "PatientID": "AnonymID_DEMO616749948975",
+      "StudyInstanceUID": "1.3.6.1.4.1.18047.1.11.11616749948975",
+      "SeriesInstanceUID": "1.3.6.1.4.1.18047.1.11.11616749949886",
+      "SOPInstanceUID": "1.3.6.1.4.1.18047.1.11.11616749949887",
+      "frameIndex": 0,
+      "imagePath": "1.3.6.1.4.1.18047.1.11.11616749948975_1.3.6.1.4.1.18047.1.11.11616749949886_1.3.6.1.4.1.18047.1.11.11616749949887_0",
+      "lesionNamingNumber": 2,
+      "userId": null,
+      "toolType": "Length",
+      "_id": "a9ec64e9-bb15-4543-dda3-be74b6c7f03c",
+      "timepointId": "TimepointId",
+      "measurementNumber": 5,
+      "length": 53.06755021358335,
+      "unit": "mm",
+      "id": 1
+    }
+  ]
 }

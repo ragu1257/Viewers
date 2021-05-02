@@ -87,13 +87,13 @@ const AssociatedFeatures = ({ handleChange, values }) => {
       <FormControlLabel
         control={
           <Checkbox
-            checked={values.associated_features.classification}
+            checked={values.associated_features.Calcifications}
             onChange={handleChange('associated_features')}
-            name="classification"
+            name="Calcifications"
             color="primary"
           />
         }
-        label="Classification"
+        label="Calcification"
       />
     </FormGroup>
   );

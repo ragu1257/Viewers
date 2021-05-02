@@ -11,9 +11,12 @@ import {
 } from '@material-ui/core';
 import MassesShape from './FindingsQuestions/MassesShape';
 import AssociatedFeatures from './FindingsQuestions/AssociatedFeatures';
-import Classification from './FindingsQuestions/Classification';
+import Calcifications from './FindingsQuestions/Calcifications';
 import Location from './FindingsQuestions/Location';
 import Distribution from './FindingsQuestions/Distribution';
+import Classification from './FindingsQuestions/Classification';
+import ArchitecturalDistortion from './FindingsQuestions/ArchitecturalDistortion';
+import Asymmetries from './FindingsQuestions/Asymmetries';
 
 const useStyles = makeStyles({
   root: {
@@ -28,6 +31,9 @@ const useStyles = makeStyles({
 });
 
 const defaultData = {
+  architectural_distortion: '',
+  classification: '',
+  associated_findings_boolean: false,
   distribution: '',
   masses: {
     shape: '',
@@ -40,9 +46,9 @@ const defaultData = {
     skin_thickening: false,
     axillary_adenopathy: false,
     architectural_distortion: false,
-    classification: false,
+    Calcifications: false,
   },
-  classification_details: {
+  calcifications_details: {
     typically_benign: '',
     suspicious: '',
   },
@@ -58,14 +64,23 @@ const ReacordFindings = ({ updateCurrentFinding, activeFinding }) => {
 
   function getSteps() {
     return [
+      'classification',
       'masses_shape',
       'associated_features',
-      'classification_details',
+      'calcifications_details',
       'distribution',
+      '6',
+      '7',
+      '8',
     ];
   }
 
   const handleNext = () => {
+    // if (formData.distribution.length != 0) {
+    //   setActiveStep(7);
+    // } else {
+    //   setActiveStep(prevActiveStep => prevActiveStep + 1);
+    // }
     setActiveStep(prevActiveStep => prevActiveStep + 1);
   };
 
@@ -83,16 +98,25 @@ const ReacordFindings = ({ updateCurrentFinding, activeFinding }) => {
     console.log('bottu clicked', input, e.target.value, e.target.name);
     e.persist();
     switch (input) {
+      case 'classification':
       case 'distribution':
-        setForm(formData => ({ ...formData, [input]: e.target.value }));
-
+      case 'architectural_distortion':
+        // console.log('in case classification', input);
+        setForm(formData => ({ ...formData, [e.target.name]: e.target.value }));
+        break;
+      // case 'distribution':
+      // //   console.log('in case distribution', input);
+      //   setForm(formData => ({ ...formData, [e.target.name]: e.target.value }));
       case 'masses':
+        // console.log('in case masses', input);
         setForm(formData => ({
           ...formData,
           masses: { ...formData.masses, [e.target.name]: e.target.value },
         }));
+        break;
 
       case 'associated_features':
+        // console.log('in case associated_features', input);
         setForm(formData => ({
           ...formData,
           associated_features: {
@@ -100,14 +124,17 @@ const ReacordFindings = ({ updateCurrentFinding, activeFinding }) => {
             [e.target.name]: e.target.checked,
           },
         }));
-      case 'classification_details':
+        break;
+      case 'calcifications_details':
+        // console.log('in case calcifications_details', input);
         setForm(formData => ({
           ...formData,
-          classification_details: {
-            ...formData.classification_details,
+          calcifications_details: {
+            ...formData.calcifications_details,
             [e.target.name]: e.target.value,
           },
         }));
+        break;
       // default:
       //   setForm(formData => ({ ...formData, [input]: e.target.value }));
     }
@@ -121,32 +148,124 @@ const ReacordFindings = ({ updateCurrentFinding, activeFinding }) => {
   const {
     masses,
     associated_features,
-    classification_details,
+    calcifications_details,
     distribution,
+    architectural_distortion,
+    associated_findings_boolean
   } = formData;
   const values = {
     masses,
+    architectural_distortion,
     associated_features,
-    classification_details,
+    calcifications_details,
     distribution,
+    associated_findings_boolean
   };
   function getStepsContent(stepIndex) {
     switch (stepIndex) {
       case 0:
-        return <MassesShape handleChange={handleChange} values={values} />;
+        return <Classification handleChange={handleChange} values={values} />;
       case 1:
-        return (
-          <AssociatedFeatures handleChange={handleChange} values={values} />
-        );
-      case 2:
-        return formData.associated_features.classification == true ? (
-          <Classification handleChange={handleChange} values={values} />
+        return formData.classification == 'masses' ? (
+          <div>
+            <h2>Make Region Of Interest</h2>
+          </div>
+        ) : formData.classification == 'calcifications' ? (
+          <div>
+          <h2>Are there any Associated Features?</h2>
+          <div
+            className="radio-toolbar density"
+            value={values.associated_findings_boolean}
+            onChange={handleChange('masses')}
+          >
+            <input
+              type="radio"
+              id="radio1"
+              name="associated_findings_boolean"
+              value="yes"
+            />
+            <label htmlFor="radio1">Yes</label>
+
+            <input
+              type="radio"
+              id="radio2"
+              name="associated_findings_boolean"
+              value="no"
+            />
+            <label htmlFor="radio2">No</label>
+          </div>
+        </div>
+        ) : formData.classification == 'architectural_distortion' ? (
+          <ArchitecturalDistortion
+            handleChange={handleChange}
+            values={values}
+          />
+        ) : formData.classification == 'asymmetries' ? (
+          <Asymmetries handleChange={handleChange} values={values} />
         ) : (
           <Location handleChange={handleChange} values={values} />
         );
+      case 2:
+        return formData.classification == 'masses' ? (
+          <MassesShape handleChange={handleChange} values={values} />
+        ) : formData.classification == 'calcifications' && formData.associated_findings_boolean=='yes' ? (
+          <AssociatedFeatures handleChange={handleChange} values={values} />
+        ) : formData.classification == 'architectural_distortion' &&
+          formData.architectural_distortion == 'standalone' ? (
+          <Location handleChange={handleChange} values={values} />
+        ) : formData.classification == 'architectural_distortion' &&
+          formData.architectural_distortion == 'associated_feature' ? (
+          <AssociatedFeatures handleChange={handleChange} values={values} />
+        ) : <Location handleChange={handleChange} values={values} />;
       case 3:
-        return formData.associated_features.classification == true ? (
+        return formData.classification == 'masses' ? (
+          <div>
+            <h2>Are there any Associated Features?</h2>
+            <div
+              className="radio-toolbar density"
+              value={values.associated_findings_boolean}
+              onChange={handleChange('masses')}
+            >
+              <input
+                type="radio"
+                id="radio1"
+                name="associated_findings_boolean"
+                value="yes"
+              />
+              <label htmlFor="radio1">Yes</label>
+
+              <input
+                type="radio"
+                id="radio2"
+                name="associated_findings_boolean"
+                value="no"
+              />
+              <label htmlFor="radio2">No</label>
+            </div>
+          </div>
+        ) : formData.classification == 'calcifications' && formData.associated_findings_boolean=='yes'?
+        <Calcifications handleChange={handleChange} values={values} />: null
+        ;
+      case 4:
+        return formData.classification == 'masses' &&
+          formData.associated_findings_boolean == 'yes' ? (
+          <AssociatedFeatures handleChange={handleChange} values={values} />
+        ) : formData.classification == 'calcifications' && formData.associated_findings_boolean=='yes'?  <Distribution handleChange={handleChange} values={values} />:(
+          <Location handleChange={handleChange} values={values} />
+        );
+      case 5:
+        return formData.associated_features.Calcifications == true ? (
+          <Calcifications handleChange={handleChange} values={values} />
+        ) : (
+          <Location handleChange={handleChange} values={values} />
+        );
+      case 6:
+        return formData.associated_features.Calcifications == true ? (
           <Distribution handleChange={handleChange} values={values} />
+        ) : null;
+      case 7:
+        return formData.distribution.length != 0 ? (
+          <Location handleChange={handleChange} values={values} />
         ) : null;
       default:
         return 'unknown step';

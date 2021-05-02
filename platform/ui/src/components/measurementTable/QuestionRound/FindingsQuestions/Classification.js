@@ -16,7 +16,6 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
 import { makeStyles } from '@material-ui/core/styles';
-import '../Stepper.css';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -38,46 +37,66 @@ const Classification = ({ handleChange, values }) => {
   // console.log('this is step 1', values);
   return (
     <div className={style.button}>
-      <p style={{ marginTop: 60 }}>Typical Benign</p>
       <div
         className="radio-toolbar density"
-        value={values.classification_details.typically_benign}
-        onChange={handleChange('classification_details')}
+        value={values.classification}
+        onChange={handleChange('classification')}
       >
-        <input type="radio" id="radio1" name="typically_benign" value="skin" />
-        <label htmlFor="radio1">skin</label>
-        <input type="radio" id="radio2" name="typically_benign" value="vascular" />
-        <label htmlFor="radio2">vascular</label>
-        <input type="radio" id="radio3" name="typically_benign" value="pop_corn_like" />
-        <label htmlFor="radio3">pop-corn like</label>
-        <input type="radio" id="radio4" name="typically_benign" value="large_rod_like" />
-        <label htmlFor="radio4">large rod like</label>
-        <input type="radio" id="radio5" name="typically_benign" value="round" />
-        <label htmlFor="radio5">round</label>
-        <input type="radio" id="radio6" name="typically_benign" value="rim" />
-        <label htmlFor="radio6">rim</label>
-        <input type="radio" id="radio7" name="typically_benign" value="dystrophic" />
-        <label htmlFor="radio7">dystrophic</label>
-        <input type="radio" id="radio8" name="typically_benign" value="milk_of_calcium" />
-        <label htmlFor="radio8">milk of calcium</label>
-        <input type="radio" id="radio9" name="typically_benign" value="suture" />
-        <label htmlFor="radio9">suture</label>
-      </div>
+        <input type="radio" id="radio1" name="classification" value="masses" />
+        <label htmlFor="radio1">Masses</label>
 
-      <p style={{ marginTop: 60 }}>Suspicious</p>
-      <div
-        className="radio-toolbar density"
-        value={values.classification_details.suspicious}
-        onChange={handleChange('classification_details')}
-      >
-        <input type="radio" id="radio10" name="suspicious" value="amorphous" />
-        <label htmlFor="radio10">amorphous</label>
-        <input type="radio" id="radio11" name="suspicious" value="coarse_heterogenous" />
-        <label htmlFor="radio11">coarse_heterogenous</label>
-        <input type="radio" id="radio12" name="suspicious" value="fine_pleomorphic" />
-        <label htmlFor="radio12">fine pleomorphic</label>
-        <input type="radio" id="radio13" name="suspicious" value="fine_linear" />
-        <label htmlFor="radio13">Fine linear or fine linear branching</label>
+        <input
+          type="radio"
+          id="radio2"
+          name="classification"
+          value="calcifications"
+        />
+        <label htmlFor="radio2">Calcifications</label>
+        <input
+          type="radio"
+          id="radio3"
+          name="classification"
+          value="architectural_distortion"
+        />
+        <label htmlFor="radio3">Architectural Distortion</label>
+
+        <input
+          type="radio"
+          id="radio4"
+          name="classification"
+          value="asymmetries"
+        />
+        <label htmlFor="radio4">Asymmetries</label>
+        <input
+          type="radio"
+          id="radio5"
+          name="classification"
+          value="intramsmmsry_lymph_node"
+        />
+        <label htmlFor="radio5">Intramsmmsry lymph node</label>
+
+        <input
+          type="radio"
+          id="radio6"
+          name="classification"
+          value="skin_lesion"
+        />
+        <label htmlFor="radio6">Skin lesion</label>
+        <input
+          type="radio"
+          id="radio7"
+          name="classification"
+          value="solitary_dilated_duct"
+        />
+        <label htmlFor="radio7">Solitary dilated duct</label>
+
+        <input
+          type="radio"
+          id="radio8"
+          name="classification"
+          value="associated_features"
+        />
+        <label htmlFor="radio8">Associated features</label>
       </div>
     </div>
   );
