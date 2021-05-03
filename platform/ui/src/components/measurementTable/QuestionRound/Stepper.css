@@ -70,8 +70,8 @@ p {
 h2 {
   text-align: center;
 }
-.finding-list{
-  padding:0
+.finding-list {
+  padding: 0;
 }
 .finding-list li {
   list-style: none;
@@ -83,4 +83,9 @@ h2 {
   padding: 10px;
   cursor: pointer;
   border-radius: 10px;
+}
+
+.MuiSvgIcon-root {
+  float: right !important;
+  color: #4bff4b !important;
 }

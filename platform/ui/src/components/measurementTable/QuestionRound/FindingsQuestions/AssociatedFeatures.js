@@ -8,7 +8,7 @@ import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
-import './FindingsQuestions.css'
+import './FindingsQuestions.css';
 
 const GreenCheckbox = withStyles({
   root: {
@@ -18,11 +18,11 @@ const GreenCheckbox = withStyles({
     },
   },
   checked: {},
-})((props) => <Checkbox color="default" {...props} />);
+})(props => <Checkbox color="default" {...props} />);
 
 const AssociatedFeatures = ({ handleChange, values }) => {
   // const [state, setState] = React.useState({ });
-
+  console.log('in associated feature', values.classification);
   // const handleChange = (event) => {
   //   setState({ ...state, [event.target.name]: event.target.checked });
   // };
@@ -84,17 +84,19 @@ const AssociatedFeatures = ({ handleChange, values }) => {
         }
         label="Architectural Distortion"
       />
-      <FormControlLabel
-        control={
-          <Checkbox
-            checked={values.associated_features.Calcifications}
-            onChange={handleChange('associated_features')}
-            name="Calcifications"
-            color="primary"
-          />
-        }
-        label="Calcification"
-      />
+      {values.classification == 'calcifications' ? null : (
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={values.associated_features.Calcifications}
+              onChange={handleChange('associated_features')}
+              name="Calcifications"
+              color="primary"
+            />
+          }
+          label="Calcification"
+        />
+      )}
     </FormGroup>
   );
 };

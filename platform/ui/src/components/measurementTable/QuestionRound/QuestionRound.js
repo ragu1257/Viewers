@@ -15,6 +15,7 @@ import {
 import StepOne from './StepOne';
 import FindingsTabs from './FindingsTabs';
 import TotalFindings from './TotalFindings';
+import { SettingsBackupRestoreTwoTone } from '@material-ui/icons';
 
 const useStyles = makeStyles({
   root: {
@@ -45,7 +46,8 @@ export const QuestionRound = () => {
   const [showComponent, setshowComponent] = useState(0);
   const [showComponentBool, setshowComponentBool] = useState(true);
   const [activeFinding, setactiveFinding] = useState();
-  const [name, setname] = useState('');
+  const [findingCount, setfindingCount] = useState();
+  const [reset, setReset] = useState(false);
 
   const props = { formData, setForm };
 
@@ -61,7 +63,27 @@ export const QuestionRound = () => {
   }
 
   const handleNext = async () => {
-    setActiveStep(prevActiveStep => prevActiveStep + 1);
+    console.log('next next next next next next next next');
+    if (
+      findingCount &&
+      reset == false &&
+      parseInt(formData.total_findings) === findingCount.length
+    ) {
+      console.log(
+        'this is end now',
+        parseInt(formData.total_findings),
+        findingCount
+      );
+      setActiveStep(7);
+    } else {
+      console.log(
+        'this is notttttttt now',
+        parseInt(formData.total_findings),
+        findingCount
+      );
+
+      setActiveStep(prevActiveStep => prevActiveStep + 1);
+    }
   };
 
   const handleBack = () => {
@@ -69,6 +91,7 @@ export const QuestionRound = () => {
   };
 
   const handleReset = () => {
+    setReset(true);
     setActiveStep(0);
   };
 
@@ -80,7 +103,7 @@ export const QuestionRound = () => {
     'findings',
     'total_findings',
     'FindingsTabs',
-    ReacordFindings,
+    'ReacordFindings',
   ];
 
   const handleChange = input => e => {
@@ -123,9 +146,15 @@ export const QuestionRound = () => {
   const updateCurrentFinding = (active, data) => e => {
     console.log('updateCurrentFinding', active, data, e);
     let finding = {};
-    finding['finding' + active] = data;
+    finding['finding ' + active] = data;
     defaultData.findingsArray.push(finding);
+    let arrayEmpty = [];
+    defaultData.findingsArray.forEach(item =>
+      arrayEmpty.push(Object.keys(item)[0])
+    );
     setActiveStep(5);
+    setfindingCount(arrayEmpty);
+    console.log('finding count', arrayEmpty);
   };
 
   function getStepsContent(stepIndex) {
@@ -181,6 +210,7 @@ export const QuestionRound = () => {
             <FindingsTabs
               handleChangeReport={handleChangeReport}
               total_findings={parseInt(values.total_findings)}
+              findingCount={findingCount}
             />
           );
           // }

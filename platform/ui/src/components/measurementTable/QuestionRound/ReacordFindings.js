@@ -97,7 +97,13 @@ const ReacordFindings = ({ updateCurrentFinding, activeFinding }) => {
     // } else {
     //   setActiveStep(prevActiveStep => prevActiveStep + 1);
     // }
-    setActiveStep(prevActiveStep => prevActiveStep + 1);
+    if(formData.location.data == true){
+      setActiveStep(8);
+
+    } else{
+      setActiveStep(prevActiveStep => prevActiveStep + 1);
+
+    }
   };
 
   const handleBack = () => {
@@ -213,6 +219,7 @@ const ReacordFindings = ({ updateCurrentFinding, activeFinding }) => {
     associated_findings_boolean,
     asymmetries,
     location,
+    classification
   } = formData;
   const values = {
     masses,
@@ -223,6 +230,7 @@ const ReacordFindings = ({ updateCurrentFinding, activeFinding }) => {
     associated_findings_boolean,
     asymmetries,
     location,
+    classification
   };
   function getStepsContent(stepIndex) {
     switch (stepIndex) {
