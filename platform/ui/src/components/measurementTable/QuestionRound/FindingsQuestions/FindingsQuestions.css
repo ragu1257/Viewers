@@ -11,3 +11,20 @@
 .MuiCheckbox-colorPrimary.Mui-checked {
   color: #fff !important;
 }
+
+.css-upwegn-TopBar,
+.css-1r6tdpo-Meridiems {
+  display: none;
+}
+.css-1r6tdpo-Meridiems,
+.css-1lmy46j-ClockWrapper,
+.css-nakgy8-TimeKeeper {
+  background: none !important;
+  box-shadow: none !important;
+}
+.css-4456cn-ClockHand {
+  stroke: #000000 !important;
+}
+.css-16j6ljo-ClockHand {
+  fill: #000000 !important;
+}

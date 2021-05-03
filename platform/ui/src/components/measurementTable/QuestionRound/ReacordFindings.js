@@ -61,9 +61,10 @@ const defaultData = {
     developing_asymmetry: '',
   },
   location: {
+    data: false,
     side: '',
     quadrant: '',
-    clockface: null,
+    clockface: '12:34pm',
     depth: null,
     distance_from_nipple: null,
   },
@@ -109,8 +110,25 @@ const ReacordFindings = ({ updateCurrentFinding, activeFinding }) => {
 
   const steps = getSteps();
 
+  function handleClock(e) {
+    setForm(formData => ({
+      ...formData,
+      location: {
+        ...formData.location,
+        clockface: e.formatted12,
+      },
+    }));
+    setForm(formData => ({
+      ...formData,
+      location: {
+        ...formData.location,
+        data: true,
+      },
+    }));
+  }
+
   const handleChange = input => e => {
-    console.log('bottu clicked', input, e.target.value, e.target.name);
+    console.log('bottu clicked', input, e);
     e.persist();
     switch (input) {
       case 'classification':
@@ -160,6 +178,22 @@ const ReacordFindings = ({ updateCurrentFinding, activeFinding }) => {
           },
         }));
         break;
+      case 'location':
+        setForm(formData => ({
+          ...formData,
+          location: {
+            ...formData.location,
+            [e.target.name]: e.target.value,
+            data: true,
+          },
+        }));
+        // setForm(formData => ({
+        //   ...formData,
+        //   location: {
+        //     ...formData.location,
+        //     data: true,
+        //   },
+        // }));
       // default:
       //   setForm(formData => ({ ...formData, [input]: e.target.value }));
     }
@@ -178,6 +212,7 @@ const ReacordFindings = ({ updateCurrentFinding, activeFinding }) => {
     architectural_distortion,
     associated_findings_boolean,
     asymmetries,
+    location,
   } = formData;
   const values = {
     masses,
@@ -187,6 +222,7 @@ const ReacordFindings = ({ updateCurrentFinding, activeFinding }) => {
     distribution,
     associated_findings_boolean,
     asymmetries,
+    location,
   };
   function getStepsContent(stepIndex) {
     switch (stepIndex) {
@@ -230,7 +266,11 @@ const ReacordFindings = ({ updateCurrentFinding, activeFinding }) => {
         ) : formData.classification == 'asymmetries' ? (
           <Asymmetries handleChange={handleChange} values={values} />
         ) : (
-          <Location handleChange={handleChange} values={values} />
+          <Location
+            handleChange={handleChange}
+            handleClock={handleClock}
+            values={values}
+          />
         );
       case 2:
         return formData.classification == 'masses' ? (
@@ -274,7 +314,11 @@ const ReacordFindings = ({ updateCurrentFinding, activeFinding }) => {
             </div>
           </div>
         ) : (
-          <Location handleChange={handleChange} values={values} />
+          <Location
+            handleChange={handleChange}
+            handleClock={handleClock}
+            values={values}
+          />
         );
       case 3:
         return formData.classification == 'masses' ? (
@@ -340,7 +384,11 @@ const ReacordFindings = ({ updateCurrentFinding, activeFinding }) => {
             </div>
           </div>
         ) : (
-          <Location handleChange={handleChange} values={values} />
+          <Location
+            handleChange={handleChange}
+            handleClock={handleClock}
+            values={values}
+          />
         );
       case 4:
         return formData.classification == 'masses' &&
@@ -363,7 +411,11 @@ const ReacordFindings = ({ updateCurrentFinding, activeFinding }) => {
           formData.associated_findings_boolean == 'yes' ? (
           <AssociatedFeatures handleChange={handleChange} values={values} />
         ) : (
-          <Location handleChange={handleChange} values={values} />
+          <Location
+            handleChange={handleChange}
+            handleClock={handleClock}
+            values={values}
+          />
         );
       case 5:
         return formData.classification == 'masses' &&
@@ -381,7 +433,11 @@ const ReacordFindings = ({ updateCurrentFinding, activeFinding }) => {
           formData.associated_features.Calcifications == true ? (
           <Calcifications handleChange={handleChange} values={values} />
         ) : (
-          <Location handleChange={handleChange} values={values} />
+          <Location
+            handleChange={handleChange}
+            handleClock={handleClock}
+            values={values}
+          />
         );
       case 6:
         return formData.classification == 'masses' &&
@@ -394,11 +450,19 @@ const ReacordFindings = ({ updateCurrentFinding, activeFinding }) => {
           formData.associated_features.Calcifications == true ? (
           <Distribution handleChange={handleChange} values={values} />
         ) : (
-          <Location handleChange={handleChange} values={values} />
+          <Location
+            handleChange={handleChange}
+            handleClock={handleClock}
+            values={values}
+          />
         );
       case 7:
         return formData.distribution.length != 0 ? (
-          <Location handleChange={handleChange} values={values} />
+          <Location
+            handleChange={handleChange}
+            handleClock={handleClock}
+            values={values}
+          />
         ) : null;
       default:
         return 'unknown step';
