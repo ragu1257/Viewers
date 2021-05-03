@@ -17,6 +17,8 @@ import Distribution from './FindingsQuestions/Distribution';
 import Classification from './FindingsQuestions/Classification';
 import ArchitecturalDistortion from './FindingsQuestions/ArchitecturalDistortion';
 import Asymmetries from './FindingsQuestions/Asymmetries';
+import AsymmetriesTwoView from './FindingsQuestions/AsymmetriesTwoView';
+import AsymmetriesOneView from './FindingsQuestions/AsymmetriesOneView';
 
 const useStyles = makeStyles({
   root: {
@@ -51,6 +53,19 @@ const defaultData = {
   calcifications_details: {
     typically_benign: '',
     suspicious: '',
+  },
+  asymmetries: {
+    view: '',
+    quadrant: '',
+    one_view: '',
+    developing_asymmetry: '',
+  },
+  location: {
+    side: '',
+    quadrant: '',
+    clockface: null,
+    depth: null,
+    distance_from_nipple: null,
   },
 };
 
@@ -101,6 +116,7 @@ const ReacordFindings = ({ updateCurrentFinding, activeFinding }) => {
       case 'classification':
       case 'distribution':
       case 'architectural_distortion':
+      case 'associated_findings_boolean':
         // console.log('in case classification', input);
         setForm(formData => ({ ...formData, [e.target.name]: e.target.value }));
         break;
@@ -135,6 +151,15 @@ const ReacordFindings = ({ updateCurrentFinding, activeFinding }) => {
           },
         }));
         break;
+      case 'asymmetries':
+        setForm(formData => ({
+          ...formData,
+          asymmetries: {
+            ...formData.asymmetries,
+            [e.target.name]: e.target.value,
+          },
+        }));
+        break;
       // default:
       //   setForm(formData => ({ ...formData, [input]: e.target.value }));
     }
@@ -151,7 +176,8 @@ const ReacordFindings = ({ updateCurrentFinding, activeFinding }) => {
     calcifications_details,
     distribution,
     architectural_distortion,
-    associated_findings_boolean
+    associated_findings_boolean,
+    asymmetries,
   } = formData;
   const values = {
     masses,
@@ -159,7 +185,8 @@ const ReacordFindings = ({ updateCurrentFinding, activeFinding }) => {
     associated_features,
     calcifications_details,
     distribution,
-    associated_findings_boolean
+    associated_findings_boolean,
+    asymmetries,
   };
   function getStepsContent(stepIndex) {
     switch (stepIndex) {
@@ -172,59 +199,11 @@ const ReacordFindings = ({ updateCurrentFinding, activeFinding }) => {
           </div>
         ) : formData.classification == 'calcifications' ? (
           <div>
-          <h2>Are there any Associated Features?</h2>
-          <div
-            className="radio-toolbar density"
-            value={values.associated_findings_boolean}
-            onChange={handleChange('masses')}
-          >
-            <input
-              type="radio"
-              id="radio1"
-              name="associated_findings_boolean"
-              value="yes"
-            />
-            <label htmlFor="radio1">Yes</label>
-
-            <input
-              type="radio"
-              id="radio2"
-              name="associated_findings_boolean"
-              value="no"
-            />
-            <label htmlFor="radio2">No</label>
-          </div>
-        </div>
-        ) : formData.classification == 'architectural_distortion' ? (
-          <ArchitecturalDistortion
-            handleChange={handleChange}
-            values={values}
-          />
-        ) : formData.classification == 'asymmetries' ? (
-          <Asymmetries handleChange={handleChange} values={values} />
-        ) : (
-          <Location handleChange={handleChange} values={values} />
-        );
-      case 2:
-        return formData.classification == 'masses' ? (
-          <MassesShape handleChange={handleChange} values={values} />
-        ) : formData.classification == 'calcifications' && formData.associated_findings_boolean=='yes' ? (
-          <AssociatedFeatures handleChange={handleChange} values={values} />
-        ) : formData.classification == 'architectural_distortion' &&
-          formData.architectural_distortion == 'standalone' ? (
-          <Location handleChange={handleChange} values={values} />
-        ) : formData.classification == 'architectural_distortion' &&
-          formData.architectural_distortion == 'associated_feature' ? (
-          <AssociatedFeatures handleChange={handleChange} values={values} />
-        ) : <Location handleChange={handleChange} values={values} />;
-      case 3:
-        return formData.classification == 'masses' ? (
-          <div>
             <h2>Are there any Associated Features?</h2>
             <div
               className="radio-toolbar density"
               value={values.associated_findings_boolean}
-              onChange={handleChange('masses')}
+              onChange={handleChange('associated_findings_boolean')}
             >
               <input
                 type="radio"
@@ -243,26 +222,180 @@ const ReacordFindings = ({ updateCurrentFinding, activeFinding }) => {
               <label htmlFor="radio2">No</label>
             </div>
           </div>
-        ) : formData.classification == 'calcifications' && formData.associated_findings_boolean=='yes'?
-        <Calcifications handleChange={handleChange} values={values} />: null
-        ;
+        ) : formData.classification == 'architectural_distortion' ? (
+          <ArchitecturalDistortion
+            handleChange={handleChange}
+            values={values}
+          />
+        ) : formData.classification == 'asymmetries' ? (
+          <Asymmetries handleChange={handleChange} values={values} />
+        ) : (
+          <Location handleChange={handleChange} values={values} />
+        );
+      case 2:
+        return formData.classification == 'masses' ? (
+          <MassesShape handleChange={handleChange} values={values} />
+        ) : formData.classification == 'calcifications' &&
+          formData.associated_findings_boolean == 'yes' ? (
+          <AssociatedFeatures handleChange={handleChange} values={values} />
+        ) : formData.classification == 'architectural_distortion' &&
+          formData.architectural_distortion == 'associated_feature' ? (
+          <AssociatedFeatures handleChange={handleChange} values={values} />
+        ) : formData.classification == 'asymmetries' &&
+          formData.asymmetries.view == 'two_views' ? (
+          <AsymmetriesTwoView handleChange={handleChange} values={values} />
+        ) : formData.classification == 'asymmetries' &&
+          formData.asymmetries.view == 'one_view' ? (
+          <AsymmetriesOneView handleChange={handleChange} values={values} />
+        ) : formData.classification == 'asymmetries' &&
+          formData.asymmetries.view == 'developing_asymmetry' ? (
+          <div>
+            <h2>Are there any Associated Features?</h2>
+            <div
+              className="radio-toolbar density"
+              value={values.associated_findings_boolean}
+              onChange={handleChange('associated_findings_boolean')}
+            >
+              <input
+                type="radio"
+                id="radio1"
+                name="associated_findings_boolean"
+                value="yes"
+              />
+              <label htmlFor="radio1">Yes</label>
+
+              <input
+                type="radio"
+                id="radio2"
+                name="associated_findings_boolean"
+                value="no"
+              />
+              <label htmlFor="radio2">No</label>
+            </div>
+          </div>
+        ) : (
+          <Location handleChange={handleChange} values={values} />
+        );
+      case 3:
+        return formData.classification == 'masses' ? (
+          <div>
+            <h2>Are there any Associated Features?</h2>
+            <div
+              className="radio-toolbar density"
+              value={values.associated_findings_boolean}
+              onChange={handleChange('associated_findings_boolean')}
+            >
+              <input
+                type="radio"
+                id="radio1"
+                name="associated_findings_boolean"
+                value="yes"
+              />
+              <label htmlFor="radio1">Yes</label>
+
+              <input
+                type="radio"
+                id="radio2"
+                name="associated_findings_boolean"
+                value="no"
+              />
+              <label htmlFor="radio2">No</label>
+            </div>
+          </div>
+        ) : (formData.classification == 'calcifications' &&
+            formData.associated_findings_boolean == 'yes') ||
+          (formData.classification == 'architectural_distortion' &&
+            formData.architectural_distortion == 'associated_feature' &&
+            formData.associated_features.Calcifications == true) ? (
+          <Calcifications handleChange={handleChange} values={values} />
+        ) : formData.classification == 'asymmetries' &&
+          formData.associated_findings_boolean == 'yes' &&
+          formData.asymmetries.view == 'developing_asymmetry' ? (
+          <AssociatedFeatures handleChange={handleChange} values={values} />
+        ) : formData.classification == 'asymmetries' &&
+          (formData.asymmetries.view == 'two_views' ||
+            formData.asymmetries.view == 'one_view') ? (
+          <div>
+            <h2>Are there any Associated Features?</h2>
+            <div
+              className="radio-toolbar density"
+              value={values.associated_findings_boolean}
+              onChange={handleChange('associated_findings_boolean')}
+            >
+              <input
+                type="radio"
+                id="radio1"
+                name="associated_findings_boolean"
+                value="yes"
+              />
+              <label htmlFor="radio1">Yes</label>
+
+              <input
+                type="radio"
+                id="radio2"
+                name="associated_findings_boolean"
+                value="no"
+              />
+              <label htmlFor="radio2">No</label>
+            </div>
+          </div>
+        ) : (
+          <Location handleChange={handleChange} values={values} />
+        );
       case 4:
         return formData.classification == 'masses' &&
           formData.associated_findings_boolean == 'yes' ? (
           <AssociatedFeatures handleChange={handleChange} values={values} />
-        ) : formData.classification == 'calcifications' && formData.associated_findings_boolean=='yes'?  <Distribution handleChange={handleChange} values={values} />:(
+        ) : (formData.classification == 'calcifications' &&
+            formData.associated_findings_boolean == 'yes') ||
+          (formData.classification == 'architectural_distortion' &&
+            formData.architectural_distortion == 'associated_feature' &&
+            formData.associated_features.Calcifications == true) ? (
+          <Distribution handleChange={handleChange} values={values} />
+        ) : formData.classification == 'asymmetries' &&
+          formData.associated_features.Calcifications == true &&
+          formData.associated_findings_boolean == 'yes' &&
+          formData.asymmetries.view == 'developing_asymmetry' ? (
+          <Calcifications handleChange={handleChange} values={values} />
+        ) : formData.classification == 'asymmetries' &&
+          (formData.asymmetries.view == 'two_views' ||
+            formData.asymmetries.view == 'one_view') &&
+          formData.associated_findings_boolean == 'yes' ? (
+          <AssociatedFeatures handleChange={handleChange} values={values} />
+        ) : (
           <Location handleChange={handleChange} values={values} />
         );
       case 5:
-        return formData.associated_features.Calcifications == true ? (
+        return formData.classification == 'masses' &&
+          formData.associated_features.Calcifications == true ? (
+          <Calcifications handleChange={handleChange} values={values} />
+        ) : formData.classification == 'asymmetries' &&
+          formData.associated_features.Calcifications == true &&
+          formData.associated_findings_boolean == 'yes' &&
+          formData.asymmetries.view == 'developing_asymmetry' ? (
+          <Distribution handleChange={handleChange} values={values} />
+        ) : formData.classification == 'asymmetries' &&
+          (formData.asymmetries.view == 'two_views' ||
+            formData.asymmetries.view == 'one_view') &&
+          formData.associated_findings_boolean == 'yes' &&
+          formData.associated_features.Calcifications == true ? (
           <Calcifications handleChange={handleChange} values={values} />
         ) : (
           <Location handleChange={handleChange} values={values} />
         );
       case 6:
-        return formData.associated_features.Calcifications == true ? (
+        return formData.classification == 'masses' &&
+          formData.associated_features.Calcifications == true ? (
           <Distribution handleChange={handleChange} values={values} />
-        ) : null;
+        ) : formData.classification == 'asymmetries' &&
+          (formData.asymmetries.view == 'two_views' ||
+            formData.asymmetries.view == 'one_view') &&
+          formData.associated_findings_boolean == 'yes' &&
+          formData.associated_features.Calcifications == true ? (
+          <Distribution handleChange={handleChange} values={values} />
+        ) : (
+          <Location handleChange={handleChange} values={values} />
+        );
       case 7:
         return formData.distribution.length != 0 ? (
           <Location handleChange={handleChange} values={values} />
