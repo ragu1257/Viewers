@@ -81,8 +81,8 @@ class MeasurementTable extends Component {
         </ScrollableArea> */}
         <ScrollableArea>
           <QuestionRound />
-          </ScrollableArea>
-        <div className="measurementTableFooter">
+        </ScrollableArea>
+        {/* <div className="measurementTableFooter">
           {saveFunction && (
             <button
               onClick={this.saveFunction}
@@ -105,7 +105,7 @@ class MeasurementTable extends Component {
               Show Measurement
             </button>
           )}
-        </div>
+        </div> */}
       </div>
     );
   }

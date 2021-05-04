@@ -46,8 +46,8 @@ export const QuestionRound = () => {
   const [showComponent, setshowComponent] = useState(0);
   const [showComponentBool, setshowComponentBool] = useState(true);
   const [activeFinding, setactiveFinding] = useState();
-  const [findingCount, setfindingCount] = useState();
-  const [reset, setReset] = useState(false);
+  const [findingCount, setfindingCount] = useState(0);
+  const [resetStudy, setresetStudy] = useState(false);
 
   const props = { formData, setForm };
 
@@ -66,7 +66,7 @@ export const QuestionRound = () => {
     console.log('next next next next next next next next');
     if (
       findingCount &&
-      reset == false &&
+      resetStudy == false &&
       parseInt(formData.total_findings) === findingCount.length
     ) {
       console.log(
@@ -91,7 +91,7 @@ export const QuestionRound = () => {
   };
 
   const handleReset = () => {
-    setReset(true);
+    setresetStudy(true);
     setActiveStep(0);
   };
 
@@ -251,6 +251,7 @@ export const QuestionRound = () => {
             <Typography className={classes.button}>
               All steps completed - you&apos;re finished
             </Typography>
+            <Button className={classes.button}>Go to next Study</Button>
             <Button onClick={handleReset} className={classes.button}>
               Reset
             </Button>
@@ -275,7 +276,16 @@ export const QuestionRound = () => {
                 parseInt(values.total_findings) == 0 ? (
                   <Button className={classes.button}>Go to next study</Button>
                 ) : (
-                  <Button className={classes.button} onClick={handleNext}>
+                  <Button
+                    disabled={
+                      activeStep === 6 ||
+                      (activeStep === 5 &&
+                        parseInt(formData.total_findings) !=
+                          findingCount.length)
+                    }
+                    className={classes.button}
+                    onClick={handleNext}
+                  >
                     {activeStep === steps.length ? 'Finish' : 'Next'}
                   </Button>
                 )}
