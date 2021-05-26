@@ -23,6 +23,11 @@ const StandaloneRouting = asyncComponent(() =>
     /* webpackChunkName: "ConnectedStandaloneRouting" */ '../connectedComponents/ConnectedStandaloneRouting.js'
   ))
 );
+const LoginPage = asyncComponent(() =>
+  retryImport(() => import(
+    /* webpackChunkName: "StudyListRouting" */ '../components/Login/LoginPage.js'
+  ))
+);
 const ViewerLocalFileData = asyncComponent(() =>
   retryImport(() => import(
     /* webpackChunkName: "ViewerLocalFileData" */ '../connectedComponents/ViewerLocalFileData.js'
@@ -41,8 +46,12 @@ const ROUTES_DEF = {
       path: '/viewer',
       component: StandaloneRouting,
     },
+    loginViewer: {
+      path: ['/'],
+      component: LoginPage,
+    },
     list: {
-      path: ['/studylist', '/'],
+      path: ['/studylist'],
       component: StudyListRouting,
       condition: appConfig => {
         return appConfig.showStudyList;

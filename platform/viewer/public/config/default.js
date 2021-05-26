@@ -1,17 +1,17 @@
 window.config = {
-  // default: '/'
+  //default: '/login',
   routerBasename: '/',
   extensions: [],
-  showStudyList: true,
+  showStudyList: false,
   filterQueryParam: false,
   servers: {
     dicomWeb: [
       {
         name: 'DCM4CHEE',
-        wadoUriRoot: 'https://server.dcmjs.org/dcm4chee-arc/aets/DCM4CHEE/wado',
-        qidoRoot: 'https://server.dcmjs.org/dcm4chee-arc/aets/DCM4CHEE/rs',
-        wadoRoot: 'https://server.dcmjs.org/dcm4chee-arc/aets/DCM4CHEE/rs',
-        qidoSupportsIncludeField: true,
+        wadoUriRoot: 'http://localhost/orthanc/wado',
+        qidoRoot: 'http://localhost/orthanc/dicom-web',
+        wadoRoot: 'http://localhost/orthanc/dicom-web',
+        qidoSupportsIncludeField: false,
         imageRendering: 'wadors',
         thumbnailRendering: 'wadors',
         enableStudyLazyLoad: true,
