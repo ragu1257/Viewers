@@ -28,6 +28,12 @@ const LoginPage = asyncComponent(() =>
     /* webpackChunkName: "StudyListRouting" */ '../components/Login/LoginPage.js'
   ))
 );
+const Dashboard = asyncComponent(() =>
+  retryImport(() => import(
+    /* webpackChunkName: "StudyListRouting" */ '../components/Dashboard/Dashboard.js'
+  ))
+);
+
 const ViewerLocalFileData = asyncComponent(() =>
   retryImport(() => import(
     /* webpackChunkName: "ViewerLocalFileData" */ '../connectedComponents/ViewerLocalFileData.js'
@@ -49,6 +55,10 @@ const ROUTES_DEF = {
     loginViewer: {
       path: ['/'],
       component: LoginPage,
+    },
+    dashboard: {
+      path: ['/dashboard'],
+      component: Dashboard,
     },
     list: {
       path: ['/studylist'],

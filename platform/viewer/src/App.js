@@ -5,6 +5,9 @@ import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { hot } from 'react-hot-loader/root';
+// import { Account } from './components/Login/Account';
+import { Account } from './components/Login/Account';
+import LoginPage from './components/Login/LoginPage';
 
 import OHIFCornerstoneExtension from '@ohif/extension-cornerstone';
 
@@ -158,9 +161,13 @@ class App extends Component {
     _initHotkeys(appConfigHotkeys);
     _initServers(servers);
     initWebWorkers();
+
   }
 
+
   render() {
+    // const AccountContext = createContext();
+    console.log("it is in app.js");
     const { whiteLabeling, routerBasename } = this._appConfig;
     const {
       UINotificationService,
@@ -172,64 +179,68 @@ class App extends Component {
 
     if (this._userManager) {
       return (
-        <ErrorBoundary context="App">
-          <Provider store={store}>
-            <AppProvider config={this._appConfig}>
-              <I18nextProvider i18n={i18n}>
-                <OidcProvider store={store} userManager={this._userManager}>
-                  <UserManagerContext.Provider value={this._userManager}>
-                    <Router basename={routerBasename}>
-                      <WhiteLabelingContext.Provider value={whiteLabeling}>
-                        <LoggerProvider service={LoggerService}>
-                          <SnackbarProvider service={UINotificationService}>
-                            <DialogProvider service={UIDialogService}>
-                              <ModalProvider
-                                modal={OHIFModal}
-                                service={UIModalService}
-                              >
-                                <OHIFStandaloneViewer
-                                  userManager={this._userManager}
-                                />
-                              </ModalProvider>
-                            </DialogProvider>
-                          </SnackbarProvider>
-                        </LoggerProvider>
-                      </WhiteLabelingContext.Provider>
-                    </Router>
-                  </UserManagerContext.Provider>
-                </OidcProvider>
-              </I18nextProvider>
-            </AppProvider>
-          </Provider>
-        </ErrorBoundary>
+        <Account>
+          <ErrorBoundary context="App">
+            <Provider store={store}>
+              <AppProvider config={this._appConfig}>
+                <I18nextProvider i18n={i18n}>
+                  <OidcProvider store={store} userManager={this._userManager}>
+                    <UserManagerContext.Provider value={this._userManager}>
+                      <Router basename={routerBasename}>
+                        <WhiteLabelingContext.Provider value={whiteLabeling}>
+                          <LoggerProvider service={LoggerService}>
+                            <SnackbarProvider service={UINotificationService}>
+                              <DialogProvider service={UIDialogService}>
+                                <ModalProvider
+                                  modal={OHIFModal}
+                                  service={UIModalService}
+                                >
+                                  <OHIFStandaloneViewer
+                                    userManager={this._userManager}
+                                  />
+                                </ModalProvider>
+                              </DialogProvider>
+                            </SnackbarProvider>
+                          </LoggerProvider>
+                        </WhiteLabelingContext.Provider>
+                      </Router>
+                    </UserManagerContext.Provider>
+                  </OidcProvider>
+                </I18nextProvider>
+              </AppProvider>
+            </Provider>
+          </ErrorBoundary>
+        </Account>
       );
     }
 
     return (
-      <ErrorBoundary context="App">
-        <Provider store={store}>
-          <AppProvider config={this._appConfig}>
-            <I18nextProvider i18n={i18n}>
-              <Router basename={routerBasename}>
-                <WhiteLabelingContext.Provider value={whiteLabeling}>
-                  <LoggerProvider service={LoggerService}>
-                    <SnackbarProvider service={UINotificationService}>
-                      <DialogProvider service={UIDialogService}>
-                        <ModalProvider
-                          modal={OHIFModal}
-                          service={UIModalService}
-                        >
-                          <OHIFStandaloneViewer />
-                        </ModalProvider>
-                      </DialogProvider>
-                    </SnackbarProvider>
-                  </LoggerProvider>
-                </WhiteLabelingContext.Provider>
-              </Router>
-            </I18nextProvider>
-          </AppProvider>
-        </Provider>
-      </ErrorBoundary>
+      <Account>
+        <ErrorBoundary context="App">
+          <Provider store={store}>
+            <AppProvider config={this._appConfig}>
+              <I18nextProvider i18n={i18n}>
+                <Router basename={routerBasename}>
+                  <WhiteLabelingContext.Provider value={whiteLabeling}>
+                    <LoggerProvider service={LoggerService}>
+                      <SnackbarProvider service={UINotificationService}>
+                        <DialogProvider service={UIDialogService}>
+                          <ModalProvider
+                            modal={OHIFModal}
+                            service={UIModalService}
+                          >
+                            <OHIFStandaloneViewer />
+                          </ModalProvider>
+                        </DialogProvider>
+                      </SnackbarProvider>
+                    </LoggerProvider>
+                  </WhiteLabelingContext.Provider>
+                </Router>
+              </I18nextProvider>
+            </AppProvider>
+          </Provider>
+        </ErrorBoundary>
+      </Account>
     );
   }
 

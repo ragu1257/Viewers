@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { ViewerbaseDragDropContext, ErrorBoundary, asyncComponent, retryImport } from '@ohif/ui';
 import { SignoutCallbackComponent } from 'redux-oidc';
 import * as RoutesUtil from './routes/routesUtil';
+import LoginPage from './components/Login/LoginPage';
 
 import NotFound from './routes/NotFound.js';
 import { Bar, Container } from './components/LoadingBar/';
@@ -83,7 +84,7 @@ class OHIFStandaloneViewer extends Component {
           />
           <Route
             path="/callback"
-            render={() => <CallbackPage userManager={userManager} />}
+            render={() => <LoginPage />}
           />
           <Route
             path="/login"
@@ -114,7 +115,7 @@ class OHIFStandaloneViewer extends Component {
                   );
                 } else {
                   const ohifRedirectTo = {
-                    pathname: '/',
+                    pathname: '/LoginPage',
                   };
                   sessionStorage.setItem(
                     'ohif-redirect-to',
@@ -179,6 +180,9 @@ class OHIFStandaloneViewer extends Component {
         </NProgress>
         <Route exact path="/silent-refresh.html" onEnter={RoutesUtil.reload} />
         <Route exact path="/logout-redirect.html" onEnter={RoutesUtil.reload} />
+        <Route exact path="/LoginPage">
+          <LoginPage />
+        </Route>
         {!noMatchingRoutes &&
           routes.map(({ path, Component }) => (
             <Route key={path} exact path={path}>
@@ -210,7 +214,7 @@ class OHIFStandaloneViewer extends Component {
               )}
             </Route>
           ))}
-        {noMatchingRoutes && <NotFound />}
+        {noMatchingRoutes && <LoginPage />}
       </>
     );
   }
